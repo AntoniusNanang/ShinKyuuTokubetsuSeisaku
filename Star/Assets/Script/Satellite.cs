@@ -5,7 +5,7 @@ using UnityEngine;
 public class Satellite : MonoBehaviour {
     [SerializeField] GameObject GameRoot;
     public LayerMask layermask;
-    [SerializeField] GameObject line;
+    [SerializeField] GameObject[] line;
     //光の入射方向と照射方向
     [SerializeField] int[] afterDir = new int[8] { 0, 1, 2, 3, 4, 5, 6, 7 };
     Vector3[] Dir = new Vector3[8] {
@@ -21,13 +21,14 @@ public class Satellite : MonoBehaviour {
     //光が入れる数
     [SerializeField] int MaxInLight = 1;
     //現在の回転角度
-    [SerializeField] int nowforward = 0;
+    public int nowforward = 0;
     //光の入ってきている数
-    int InLight = 0;
+    [SerializeField]int InLight = 0;
 
 
     void Start() {
         Lightoff();
+        GameRoot = GameObject.Find("GameRoot");
     }
 
     public void RayCast(int dir, int pow) { //光の方向と強さを受け取る
@@ -49,13 +50,12 @@ public class Satellite : MonoBehaviour {
             InLight++;
             //Rayがぶつかったオブジェクトまで線を描き、光を渡す
             if (Physics.Raycast(ray, out hit, 20.0f, layermask)) {
-                line.GetComponent<LineRenderer>().SetPosition(1, hit.point);
+                line[InLight-1].GetComponent<LineRenderer>().SetPosition(1, hit.collider.transform.position);
                 hit.collider.GetComponent<Satellite>().RayCast((d + nowforward) % 8, nextPow);
             } else {
-                line.GetComponent<LineRenderer>().SetPosition(1, transform.position + nextDir * 5);
+                line[InLight-1].GetComponent<LineRenderer>().SetPosition(1, transform.position + nextDir * 5);
             }
             GameRoot.GetComponent<GameDirector>().lightObj.Add(this.gameObject);
-            Debug.Log(gameObject.name + InLight);
         }
     }
 
@@ -67,8 +67,10 @@ public class Satellite : MonoBehaviour {
 
     //光線のリセット
     public void Lightoff() {
-        line.GetComponent<LineRenderer>().SetPosition(0, transform.position);
-        line.GetComponent<LineRenderer>().SetPosition(1, transform.position);
+        for(int i = 0; i < MaxInLight; i++) {
+            line[i].GetComponent<LineRenderer>().SetPosition(0, transform.position);
+            line[i].GetComponent<LineRenderer>().SetPosition(1, transform.position);
+        }
         InLight = 0;
     }
 }

@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Square : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void SetObj(GameObject obj) {
+        if (transform.childCount == 0) {
+            obj.transform.parent = transform;
+            obj.transform.position = transform.position;
+        }
+    }
 }
