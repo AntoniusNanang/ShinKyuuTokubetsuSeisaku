@@ -13,7 +13,7 @@ public class GameDirector : MonoBehaviour {
     //移動中のオブジェクト
     GameObject satellite = null;
     //Rayの長さ
-    float raydistans = 20;
+    float raydistans = 40;
 
     void Start() {
         ReLight();
