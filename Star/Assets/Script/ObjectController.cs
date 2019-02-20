@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameDitector : MonoBehaviour {
+public class ObjectController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
