@@ -7,16 +7,16 @@ public class GameDirector : MonoBehaviour {
     public LayerMask satellitemask;
     public LayerMask squaremask;
     //光源のスタート方向
-    int StartDir = 6;
+    public int StartDir = 6;
     //光を飛ばしているオブジェクト
     public List<GameObject> lightObj = new List<GameObject>();
     //移動中のオブジェクト
     GameObject satellite = null;
     //Rayの長さ
-    float raydistans = 40;
+    float raydistans = 70;
 
     void Start() {
-        ReLight();
+        Invoke("ReLight", 2);
     }
 	
 	void Update () {
@@ -52,7 +52,7 @@ public class GameDirector : MonoBehaviour {
         }
     }
 
-    void ReLight() {
+    public void ReLight() {
         for(int i = 0; i < lightObj.Count; i++) {
             lightObj[i].GetComponent<Satellite>().Lightoff();
         }
