@@ -27,7 +27,7 @@ public class GameDirector : MonoBehaviour {
         //左クリックで移動
         if (Input.GetMouseButtonDown(0) && !Input.GetMouseButton(2)) {
             if (Physics.Raycast(ray, out hit, raydistans, satellitemask)) {
-                if (hit.collider.tag != "Sun") {
+                if (hit.collider.GetComponent<Satellite>().moveFlag == true) {
                     satellite = hit.collider.gameObject;
                     satellite.GetComponent<BoxCollider>().enabled = false;
                     ReLight();

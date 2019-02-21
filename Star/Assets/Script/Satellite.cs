@@ -29,6 +29,7 @@ public class Satellite : MonoBehaviour {
     public int nowforward = 0;
     //光の入ってきている数
     [SerializeField] int InLight = 0;
+    public bool moveFlag = true;
 
 
     void Start() {
