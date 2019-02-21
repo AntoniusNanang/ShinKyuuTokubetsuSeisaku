@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour {
     Vector3 startPosC;
     Quaternion startRote;
     Vector3 targetPos;
-    float camera_z = 50;
+    float camera_z = -50;
     void Start()
     {
         transform.position = new Vector3(0, 0, camera_z);
@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour {
         }
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        transform.position += transform.forward * scroll * 3;
+        transform.position += transform.forward * scroll * 5;
     }
 
     public void CameraReset()

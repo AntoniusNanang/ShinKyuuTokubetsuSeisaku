@@ -19,8 +19,8 @@ public class CenterMove : MonoBehaviour
             angleH += Input.GetAxis("Mouse X");
             angleV += Input.GetAxis("Mouse Y");
             Vector3 moveForward = Camera.main.transform.up * angleV + Camera.main.transform.right * angleH;
-            moveForward.y = 0;
-            Vector3 newPos = transform.position + moveForward / 90f;
+            moveForward.z = 0;
+            Vector3 newPos = transform.position + moveForward / 40f;
             transform.position = newPos;
         }
         else
