@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Satellite : MonoBehaviour {
-    [SerializeField] GameObject GameRoot;
+    GameObject GameRoot;
     public LayerMask layermask;
     [SerializeField] GameObject[] line;
     //光の入射方向と照射方向

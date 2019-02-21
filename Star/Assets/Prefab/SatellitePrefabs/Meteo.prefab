@@ -153,8 +153,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1526932680538368}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19, y: 8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4694710116243152}
   - {fileID: 4273234715895218}
@@ -227,7 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ae998944e088741a2bdfc55a44eef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameRoot: {fileID: 0}
   layermask:
     serializedVersion: 2
     m_Bits: 256
@@ -237,10 +236,12 @@ MonoBehaviour:
   - {fileID: 1604147039249206}
   - {fileID: 1651904680153774}
   afterDir: 0000000001000000020000000300000004000000050000000600000007000000
+  afterDir2: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   afterPow: 0.5
   MaxInLight: 4
   nowforward: 0
   InLight: 0
+  moveFlag: 0
 --- !u!120 &120041568566956170
 LineRenderer:
   m_ObjectHideFlags: 1
