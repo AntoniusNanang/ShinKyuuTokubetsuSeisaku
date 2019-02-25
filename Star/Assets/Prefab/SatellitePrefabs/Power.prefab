@@ -22,10 +22,10 @@ GameObject:
   - component: {fileID: 33895858730651756}
   - component: {fileID: 65137421735085776}
   - component: {fileID: 23013740271420594}
-  - component: {fileID: 114311806586842354}
+  - component: {fileID: 114902859920908938}
   m_Layer: 8
   m_Name: Power
-  m_TagString: Untagged
+  m_TagString: Power
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114311806586842354
+--- !u!114 &114902859920908938
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1550110600175394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0ae998944e088741a2bdfc55a44eef4, type: 3}
+  m_Script: {fileID: 11500000, guid: ccb41b236f4a5b74aa5addceb4c68906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   layermask:
@@ -143,7 +143,6 @@ MonoBehaviour:
   line:
   - {fileID: 1897783056502984}
   afterDir: 00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-  afterDir2: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   afterPow: 2
   MaxInLight: 1
   nowforward: 0
