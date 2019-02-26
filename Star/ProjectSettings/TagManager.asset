@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Sun
+  - Mirror
+  - Power
+  - Meteo
+  - Star
+  - Split
   layers:
   - Default
   - TransparentFX

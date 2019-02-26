@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 33189304452040806}
   - component: {fileID: 65368823247574516}
   - component: {fileID: 23811071558540672}
-  - component: {fileID: 114286768942961096}
+  - component: {fileID: 114410240896221268}
   m_Layer: 8
   m_Name: Mirror
   m_TagString: Untagged
@@ -216,7 +216,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114286768942961096
+--- !u!114 &114410240896221268
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1830226175124714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0ae998944e088741a2bdfc55a44eef4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3bc5e88eefaca594f80a3a682325d24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   layermask:
@@ -236,7 +236,6 @@ MonoBehaviour:
   - {fileID: 1256286887942190}
   - {fileID: 1902704823263374}
   afterDir: ffffffff07000000ffffffff05000000ffffffff03000000ffffffff01000000
-  afterDir2: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   afterPow: 1
   MaxInLight: 4
   nowforward: 0

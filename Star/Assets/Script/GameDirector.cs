@@ -4,59 +4,43 @@ using UnityEngine;
 
 public class GameDirector : MonoBehaviour {
     public GameObject Sun;
-    public LayerMask satellitemask;
-    public LayerMask squaremask;
     //光源のスタート方向
     public int StartDir = 6;
     //光を飛ばしているオブジェクト
     public List<GameObject> lightObj = new List<GameObject>();
-    //移動中のオブジェクト
-    GameObject satellite = null;
-    //Rayの長さ
-    float raydistans = 70;
 
     void Start() {
         Invoke("ReLight", 2);
     }
-	
-	void Update () {
-        //Rayの作成
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
 
-        //左クリックで移動
-        if (Input.GetMouseButtonDown(0) && !Input.GetMouseButton(2)) {
-            if (Physics.Raycast(ray, out hit, raydistans, satellitemask)) {
-                if (hit.collider.GetComponent<Satellite>().moveFlag == true) {
-                    satellite = hit.collider.gameObject;
-                    satellite.GetComponent<BoxCollider>().enabled = false;
-                    ReLight();
-                }
-            }
-        //右クリックでオブジェクトの回転
-        } else if (Input.GetMouseButtonDown(1) && !Input.GetMouseButton(2)) {
-            if (Physics.Raycast(ray, out hit, raydistans, satellitemask)) {
-                hit.collider.GetComponent<Satellite>().Spin();
-                ReLight();
-            }
-        } else if (Input.GetMouseButtonUp(0) && satellite != null) {
-            satellite.GetComponent<BoxCollider>().enabled = true;
-            satellite.GetComponent<Satellite>().Lightoff();
-            satellite = null;
-            ReLight();
+
+    void Lightoff(GameObject obj) {
+        switch (obj.tag) {
+            case "Sun":
+                obj.GetComponent<Sun>().Lightoff();
+                break;
+            case "Mirror":
+                obj.GetComponent<Mirror>().Lightoff();
+                break;
+            case "Power":
+                obj.GetComponent<Power>().Lightoff();
+                break;
+            case "Split":
+                obj.GetComponent<Split>().Lightoff();
+                break;
+            case "Meteo":
+                obj.GetComponent<Meteo>().Lightoff();
+                break;
         }
-        if (satellite != null) {
-            if (Physics.Raycast(ray, out hit, raydistans, squaremask)) {
-                hit.collider.GetComponent<Square>().SetObj(satellite);
-            }
-        }
+
     }
 
+
     public void ReLight() {
-        for(int i = 0; i < lightObj.Count; i++) {
-            lightObj[i].GetComponent<Satellite>().Lightoff();
+        for (int i = 0; i < lightObj.Count; i++) {
+            Lightoff(lightObj[i]);
         }
         lightObj.Clear();
-        Sun.GetComponent<Satellite>().RayCast(StartDir, 4);
+        Sun.GetComponent<Sun>().RayCast(StartDir, 4);
     }
 }
