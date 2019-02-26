@@ -25,11 +25,11 @@ public class Mirror : Satellite_Base {
 
             //Rayがぶつかったオブジェクトまで線を描き、光を渡す
             if (Physics.Raycast(ray, out hit, 20.0f, layermask)) {
-                drawLine(InLight, hit.collider.transform.position, pow, nextPow);
+                drawLine(d, hit.collider.transform.position, pow, nextPow);
                 HitRay(hit.collider.gameObject, (d + nowforward) % 8, nextPow);
                 
             } else {
-                drawLine(InLight, transform.position + nextDir * 20, pow, nextPow);
+                drawLine(d, transform.position + nextDir * 20, pow, nextPow);
             }
         }
     }

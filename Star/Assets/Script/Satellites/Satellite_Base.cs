@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Satellite_Base : MonoBehaviour {
-    GameObject GameRoot;
+    protected GameObject GameRoot;
     public LayerMask layermask;
     [SerializeField] protected GameObject[] line;
     //光の入射方向と照射方向
@@ -14,6 +14,8 @@ public class Satellite_Base : MonoBehaviour {
         new Vector3(0, -1, 0), new Vector3(1, -1, 0),
         new Vector3(1, 0, 0), new Vector3(1, 1, 0)
     };
+    //光の入射方向と使うLineの番号
+    public int[] lineNum = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
     //光の強さの色
     Color[] color = new Color[5] {
         Color.black, Color.white, Color.yellow, Color.black, Color.red
@@ -75,11 +77,11 @@ public class Satellite_Base : MonoBehaviour {
     }
 
     //光線を飛ばす
-    protected void drawLine(int count, Vector3 pos, float startpow, float endpow) {
-        line[count - 1].GetComponent<LineRenderer>().sortingOrder = (int)endpow;
-        line[count - 1].GetComponent<LineRenderer>().SetPosition(1, pos);
-        line[count - 1].GetComponent<LineRenderer>().startColor = color[(int)endpow];
-        line[count - 1].GetComponent<LineRenderer>().endColor = color[(int)endpow];
+    protected void drawLine(int num, Vector3 pos, float startpow, float endpow) {
+        line[lineNum[num]].GetComponent<LineRenderer>().sortingOrder = (int)endpow;
+        line[lineNum[num]].GetComponent<LineRenderer>().SetPosition(1, pos);
+        line[lineNum[num]].GetComponent<LineRenderer>().startColor = color[(int)endpow];
+        line[lineNum[num]].GetComponent<LineRenderer>().endColor = color[(int)endpow];
         GameRoot.GetComponent<GameDirector>().lightObj.Add(this.gameObject);
     }
 }
