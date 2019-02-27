@@ -8,9 +8,16 @@ public class GameDirector : MonoBehaviour {
     public int StartDir = 6;
     //光を飛ばしているオブジェクト
     public List<GameObject> lightObj = new List<GameObject>();
+    //手持ち
+    [SerializeField] List<GameObject> MyMirror = new List<GameObject>();
+    [SerializeField] List<GameObject> MyPower = new List<GameObject>();
+    [SerializeField] List<GameObject> MySplit = new List<GameObject>();
+
+    ObjectController objCon;
 
     void Start() {
         Invoke("ReLight", 2);
+        objCon = GetComponent<ObjectController>();
     }
 
 
@@ -42,5 +49,49 @@ public class GameDirector : MonoBehaviour {
         }
         lightObj.Clear();
         Sun.GetComponent<Sun>().RayCast(StartDir, 4);
+    }
+
+    //手持ちからobjectを出す
+    public void Getobj(int objNum) {
+        switch (objNum) {
+            case 0:
+                if (MyMirror.Count > 0) {
+                    objCon.MoveObject(MyMirror[0]);
+                    MyMirror.RemoveAt(0);
+                }
+                break;
+            case 1:
+                if (MyPower.Count > 0) {
+                    objCon.MoveObject(MyPower[0]);
+                    MyPower.RemoveAt(0);
+                }
+                break;
+            case 2:
+                if (MySplit.Count > 0) {
+                    objCon.MoveObject(MySplit[0]);
+                    MySplit.RemoveAt(0);
+                }
+                break;
+        }
+            
+    }
+
+    //手持ちにobjectを戻す
+    public void Setobj(GameObject obj) {
+        switch (obj.tag) {
+            case "Mirror":
+                MyMirror.Add(obj);
+                obj.SetActive(false);
+                break;
+            case "Power":
+                MyPower.Add(obj);
+                obj.SetActive(false);
+                break;
+            case "Split":
+                MySplit.Add(obj);
+                obj.SetActive(false);
+                break;
+        }
+
     }
 }
