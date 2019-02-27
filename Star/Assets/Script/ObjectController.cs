@@ -7,9 +7,12 @@ public class ObjectController : MonoBehaviour {
     public LayerMask squaremask;
     //移動中のオブジェクト
     GameObject satellite = null;
+    //移動中のオブジェクトの前の親
+    GameObject satelliteParent = null;
     //Rayの長さ
     float raydistans = 70;
     GameDirector gameDirector;
+
 
     void Start() {
         gameDirector = GetComponent<GameDirector>();
@@ -43,7 +46,7 @@ public class ObjectController : MonoBehaviour {
         }
         if (satellite != null) {
             if (Physics.Raycast(ray, out hit, raydistans, squaremask)) {
-                hit.collider.GetComponent<Square>().SetObj(satellite);
+                ObjMove(hit.collider.gameObject);
             }
         }
     }
@@ -74,6 +77,14 @@ public class ObjectController : MonoBehaviour {
 
         }
 
+    }
+
+    void ObjMove(GameObject obj) {
+        bool flag = obj.GetComponent<Square>().SetObj(satellite);
+        if (!flag) {
+            satellite.SetActive(false);
+
+        }
     }
 
 

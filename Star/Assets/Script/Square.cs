@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Square : MonoBehaviour {
 
-    public void SetObj(GameObject obj) {
+    public bool SetObj(GameObject obj) {
         if (transform.childCount == 0) {
+            obj.SetActive(true);
             obj.transform.parent = transform;
             obj.transform.position = transform.position;
+            return true;
+        } else if (transform.GetChild(0).gameObject == obj) {
+            return true;
         }
+        return false;
     }
 }
