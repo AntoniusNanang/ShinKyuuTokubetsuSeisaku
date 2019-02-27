@@ -12,10 +12,17 @@ public class ObjectController : MonoBehaviour {
     //Rayの長さ
     float raydistans = 70;
     GameDirector gameDirector;
+    //object移動(UI)
+    [SerializeField] GameObject[] satelliteUI;
+    RectTransform[] rectTransform;
 
 
     void Start() {
         gameDirector = GetComponent<GameDirector>();
+        rectTransform = new RectTransform[satelliteUI.Length];
+        for(int i = 0; i < satelliteUI.Length; i++) {
+            rectTransform[i] = satelliteUI[i].GetComponent<RectTransform>();
+        }
     }
 
     void Update() {
@@ -26,12 +33,7 @@ public class ObjectController : MonoBehaviour {
         //左クリックで移動
         if (Input.GetMouseButtonDown(0) && !Input.GetMouseButton(2)) {
             if (Physics.Raycast(ray, out hit, raydistans, satellitemask)) {
-                if (Moveflag(hit.collider.gameObject)) {
-                    satellite = hit.collider.gameObject;
-                    satellite.GetComponent<BoxCollider>().enabled = false;
-                    gameDirector.ReLight();
-                    gameDirector.lightObj.Add(satellite);
-                }
+                if (Moveflag(hit.collider.gameObject)) MoveObject(hit.collider.gameObject);
             }
             //右クリックでオブジェクトの回転
         } else if (Input.GetMouseButtonDown(1) && !Input.GetMouseButton(2)) {
@@ -41,12 +43,22 @@ public class ObjectController : MonoBehaviour {
             }
         } else if (Input.GetMouseButtonUp(0) && satellite != null) {
             satellite.GetComponent<BoxCollider>().enabled = true;
+            UIMove(true);
+            if (Physics.Raycast(ray, out hit, raydistans, squaremask)) {
+                bool flag = hit.collider.GetComponent<Square>().SetObj(satellite);
+                if (!flag) gameDirector.Setobj(satellite);
+            } else {
+                gameDirector.Setobj(satellite);
+            }
             satellite = null;
             gameDirector.ReLight();
         }
         if (satellite != null) {
             if (Physics.Raycast(ray, out hit, raydistans, squaremask)) {
-                ObjMove(hit.collider.gameObject);
+                bool flag = hit.collider.GetComponent<Square>().SetObj(satellite);
+                UIMove(flag);
+            } else {
+                UIMove(false);
             }
         }
     }
@@ -61,6 +73,13 @@ public class ObjectController : MonoBehaviour {
                 return obj.GetComponent<Split>().moveFlag;
         }
         return false;
+    }
+
+    public void MoveObject(GameObject obj) {
+        satellite = obj;
+        satellite.GetComponent<BoxCollider>().enabled = false;
+        gameDirector.ReLight();
+        gameDirector.lightObj.Add(satellite);
     }
 
     void Spin(GameObject obj) {
@@ -79,13 +98,28 @@ public class ObjectController : MonoBehaviour {
 
     }
 
-    void ObjMove(GameObject obj) {
-        bool flag = obj.GetComponent<Square>().SetObj(satellite);
-        if (!flag) {
+    void UIMove(bool flag) {
+        if (flag) {
+            foreach(GameObject obj in satelliteUI) {
+                obj.SetActive(false);
+            }
+            satellite.SetActive(true);
+        } else {
             satellite.SetActive(false);
-
+            switch (satellite.tag) {
+                case "Mirror":
+                    satelliteUI[0].SetActive(true);
+                    rectTransform[0].position = Input.mousePosition;
+                    break;
+                case "Power":
+                    satelliteUI[1].SetActive(true);
+                    rectTransform[1].position = Input.mousePosition;
+                    break;
+                case "Split":
+                    satelliteUI[2].SetActive(true);
+                    rectTransform[2].position = Input.mousePosition;
+                    break;
+            }
         }
     }
-
-
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StageDirector : MonoBehaviour {
+    [SerializeField] GameDirector gameDirector;
     //ステージのマップ
     static int[,] stageMap = new int[50, 50];
     //ステージ上のギミックの初期方向
@@ -16,6 +17,9 @@ public class StageDirector : MonoBehaviour {
     //初期位置
     Vector3 startPos = new Vector3(0, 0, -5);
 
+
+
+    //*************************************************************************************************************
     //　0=空白　1=空白マス　2=光源　3=クリア地点　4=隕石　5=人工衛星　6=増幅装置　7=分裂装置
 
     int[,] test = new int[50, 50]
@@ -77,10 +81,11 @@ public class StageDirector : MonoBehaviour {
     // Y=23～28 X=21～30
     //　光源、増幅装置、分裂装置　上0　左2　下4　右6　人工衛星　左斜め上1　左斜め下3
     int[] testdirection = new int[] { 6 };
+    //*************************************************************************************************************
+
 
     void Start() {
         StageSet(test, testdirection, testposition);
-
 
         CreateStage();
     }
@@ -114,8 +119,8 @@ public class StageDirector : MonoBehaviour {
                     case 2:
                         obj = Instantiate(Prefabs[0]);
                         square.GetComponent<Square>().SetObj(obj);
-                        GetComponent<GameDirector>().StartDir = startdirection[countObj];
-                        GetComponent<GameDirector>().Sun = obj;
+                        gameDirector.StartDir = startdirection[countObj];
+                        gameDirector.Sun = obj;
                         obj.GetComponent<Sun>().Lightoff();
                         countObj++;
                         break;
@@ -159,6 +164,21 @@ public class StageDirector : MonoBehaviour {
             }
         }
         //所持アイテムを生成
+        GameObject myobj = null;
+        for (int i = 0; i < haveObj[0]; i++) {
+            myobj = Instantiate(Prefabs[3]);
+            myobj.GetComponent<Mirror>().nowforward = 1;
+            myobj.transform.Rotate(0, 0, 45);
+            gameDirector.Setobj(myobj);
+        }
+        for (int i = 0; i < haveObj[1]; i++) {
+            myobj = Instantiate(Prefabs[4]);
+            gameDirector.Setobj(myobj);
+        }
+        for (int i = 0; i < haveObj[2]; i++) {
+            myobj = Instantiate(Prefabs[5]);
+            gameDirector.Setobj(myobj);
+        }
 
     }
 }
