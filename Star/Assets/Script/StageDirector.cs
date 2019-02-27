@@ -13,6 +13,8 @@ public class StageDirector : MonoBehaviour {
     [SerializeField] GameObject squaresParent;
     //Prefab
     [SerializeField] GameObject[] Prefabs;
+    //初期位置
+    Vector3 startPos = new Vector3(0, 0, -5);
 
     //　0=空白　1=空白マス　2=光源　3=クリア地点　4=隕石　5=人工衛星　6=増幅装置　7=分裂装置
 
@@ -80,7 +82,7 @@ public class StageDirector : MonoBehaviour {
         StageSet(test, testdirection, testposition);
 
 
-        //CreateStage();
+        CreateStage();
     }
 
     //ステージ情報を設定
@@ -90,73 +92,73 @@ public class StageDirector : MonoBehaviour {
         haveObj = objects;
     }
 
-    ////ステージを生成
-    //void CreateStage() {
-    //    int countObj = 0;
-    //    //マス目の親を取得
-    //    GameObject[] squares = new GameObject[50];
-    //    for (int i = 0; i < 50; i++) {
-    //        squares[i] = squaresParent.transform.GetChild(i).gameObject;
-    //    }
+    //ステージを生成
+    void CreateStage() {
+        int countObj = 0;
+        //マス目の親を取得
+        GameObject[] squares = new GameObject[50];
+        for (int i = 0; i < 50; i++) {
+            squares[i] = squaresParent.transform.GetChild(i).gameObject;
+        }
 
 
-    //    for (int i = 0; i < 50; i++) {
-    //        for (int j = 0; j < 50; j++) {
-    //            GameObject square = squares[i].transform.GetChild(j).gameObject;
-    //            GameObject obj = null;
+        for (int i = 0; i < 50; i++) {
+            for (int j = 0; j < 50; j++) {
+                GameObject square = squares[i].transform.GetChild(j).gameObject;
+                GameObject obj = null;
 
-    //            switch(stageMap[i, j]) {
-    //                case 0:
-    //                    square.SetActive(false);
-    //                    break;
-    //                case 1:
-    //                    break;
-    //                case 2:
-    //                    obj = Instantiate(Prefabs[0]);
-    //                    square.GetComponent<Square>().SetObj(obj);
-    //                    GetComponent<GameDirector>().StartDir = startdirection[countObj];
-    //                    GetComponent<GameDirector>().Sun = obj;
-    //                    obj.GetComponent<Satellite>().Lightoff();
-    //                    countObj++;
-    //                    break;
-    //                case 3:
-    //                    obj = Instantiate(Prefabs[1]);
-    //                    square.GetComponent<Square>().SetObj(obj);
-    //                    break;
-    //                case 4:
-    //                    obj = Instantiate(Prefabs[2]);
-    //                    square.GetComponent<Square>().SetObj(obj);
-    //                    obj.GetComponent<Satellite>().Lightoff();
-    //                    break;
-    //                case 5:
-    //                    obj = Instantiate(Prefabs[3]);
-    //                    square.GetComponent<Square>().SetObj(obj);
-    //                    obj.GetComponent<Satellite>().nowforward = startdirection[countObj];
-    //                    obj.transform.Rotate(0, 0, 45 * startdirection[countObj]);
-    //                    obj.GetComponent<Satellite>().Lightoff();
-    //                    obj.GetComponent<Satellite>().moveFlag = false;
-    //                    countObj++;
-    //                    break;
-    //                case 6:
-    //                    obj = Instantiate(Prefabs[4]);
-    //                    square.GetComponent<Square>().SetObj(obj);
-    //                    obj.GetComponent<Satellite>().nowforward = startdirection[countObj];
-    //                    obj.transform.Rotate(0, 0, 45 * startdirection[countObj]);
-    //                    obj.GetComponent<Satellite>().Lightoff();
-    //                    obj.GetComponent<Satellite>().moveFlag = false;
-    //                    countObj++;
-    //                    break;
-    //                case 7:
-    //                    obj = Instantiate(Prefabs[5]);
-    //                    square.GetComponent<Square>().SetObj(obj);
-    //                    obj.GetComponent<Satellite>().nowforward = startdirection[countObj];
-    //                    obj.transform.Rotate(0, 0, 45 * startdirection[countObj]);
-    //                    obj.GetComponent<Satellite>().Lightoff();
-    //                    obj.GetComponent<Satellite>().moveFlag = false;
-    //                    countObj++;
-    //                    break;
-    //            }
-    //        }
-    //    }
-    //}
+                switch (stageMap[i, j]) {
+                    case 0:
+                        square.SetActive(false);
+                        break;
+                    case 2:
+                        obj = Instantiate(Prefabs[0]);
+                        square.GetComponent<Square>().SetObj(obj);
+                        GetComponent<GameDirector>().StartDir = startdirection[countObj];
+                        GetComponent<GameDirector>().Sun = obj;
+                        obj.GetComponent<Sun>().Lightoff();
+                        countObj++;
+                        break;
+                    case 3:
+                        obj = Instantiate(Prefabs[1]);
+                        square.GetComponent<Square>().SetObj(obj);
+                        break;
+                    case 4:
+                        obj = Instantiate(Prefabs[2]);
+                        square.GetComponent<Square>().SetObj(obj);
+                        obj.GetComponent<Meteo>().Lightoff();
+                        break;
+                    case 5:
+                        obj = Instantiate(Prefabs[3]);
+                        square.GetComponent<Square>().SetObj(obj);
+                        obj.GetComponent<Mirror>().nowforward = startdirection[countObj];
+                        obj.transform.Rotate(0, 0, 45 * startdirection[countObj]);
+                        obj.GetComponent<Mirror>().Lightoff();
+                        obj.GetComponent<Mirror>().moveFlag = false;
+                        countObj++;
+                        break;
+                    case 6:
+                        obj = Instantiate(Prefabs[4]);
+                        square.GetComponent<Square>().SetObj(obj);
+                        obj.GetComponent<Power>().nowforward = startdirection[countObj];
+                        obj.transform.Rotate(0, 0, 45 * startdirection[countObj]);
+                        obj.GetComponent<Power>().Lightoff();
+                        obj.GetComponent<Power>().moveFlag = false;
+                        countObj++;
+                        break;
+                    case 7:
+                        obj = Instantiate(Prefabs[5]);
+                        square.GetComponent<Square>().SetObj(obj);
+                        obj.GetComponent<Split>().nowforward = startdirection[countObj];
+                        obj.transform.Rotate(0, 0, 45 * startdirection[countObj]);
+                        obj.GetComponent<Split>().Lightoff();
+                        obj.GetComponent<Split>().moveFlag = false;
+                        countObj++;
+                        break;
+                }
+            }
+        }
+        //所持アイテムを生成
+
+    }
 }
