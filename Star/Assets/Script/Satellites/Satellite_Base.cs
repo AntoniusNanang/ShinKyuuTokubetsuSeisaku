@@ -32,7 +32,7 @@ public class Satellite_Base : MonoBehaviour {
     [SerializeField] protected int InLight = 0;
 
     public bool moveFlag = true;
-
+    float linewidth = 0.15f;
 
     void Start() {
         Lightoff();
@@ -82,6 +82,8 @@ public class Satellite_Base : MonoBehaviour {
         line[lineNum[num]].GetComponent<LineRenderer>().SetPosition(1, pos);
         line[lineNum[num]].GetComponent<LineRenderer>().startColor = color[(int)endpow];
         line[lineNum[num]].GetComponent<LineRenderer>().endColor = color[(int)endpow];
+        line[lineNum[num]].GetComponent<LineRenderer>().startWidth = endpow * linewidth;
+        line[lineNum[num]].GetComponent<LineRenderer>().endWidth = endpow * linewidth;
         GameRoot.GetComponent<GameDirector>().lightObj.Add(this.gameObject);
     }
 }
