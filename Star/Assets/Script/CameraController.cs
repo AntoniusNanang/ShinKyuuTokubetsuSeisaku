@@ -11,9 +11,11 @@ public class CameraController : MonoBehaviour {
     Vector3 targetPos;
     float LastX;
     float LastY;
+    static public float camera_z = -50;
 
     void Start()
     {
+        transform.position = new Vector3(0, 0, camera_z);
         targetObj = GameObject.Find("target");
         centerObj = GameObject.Find("Center");
         startPosC = centerObj.transform.position;

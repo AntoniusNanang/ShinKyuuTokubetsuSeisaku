@@ -10,6 +10,8 @@ public class StageDirector : MonoBehaviour {
     static int[] startdirection;
     //保持しているギミックの数
     static int[] haveObj;
+    //カメラの広さ
+    static int camera_;
     //マス目の親の親
     [SerializeField] GameObject squaresParent;
     //Prefab
@@ -142,6 +144,7 @@ public class StageDirector : MonoBehaviour {
     // Y=21～30 X=21～28
     //　光源、増幅装置、分裂装置　上0　左2　下4　右6　人工衛星　左斜め上1　左斜め下3
     int[] b03 = new int[] { 4, 3 };
+    int b04 = -12;
 
 
 
@@ -213,16 +216,18 @@ public class StageDirector : MonoBehaviour {
 
 
     void Start() {
-        StageSet(b01, b02, b03);
+        StageSet(b01, b02, b03, b04);
 
+        CameraController.camera_z = camera_;
         CreateStage();
     }
 
     //ステージ情報を設定
-    static public void StageSet(int[,] map, int[] objects, int[] dir) {
+    static public void StageSet(int[,] map, int[] objects, int[] dir,int camera) {
         stageMap = map;
         startdirection = dir;
         haveObj = objects;
+        camera_ = camera; 
     }
 
     //ステージを生成
