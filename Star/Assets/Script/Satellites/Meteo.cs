@@ -3,6 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Meteo : Satellite_Base {
+    //[SerializeField] GameObject[] meteoChildren;
+    //float rndx = 0.4f;
+    //float rndy = 0.4f;
+    //float rndz = 0.4f;
+
+    //void Start() {
+    //    for(int i = 0; i < meteoChildren.Length; i++) {
+    //        //Vector3 pos = new Vector3(Random.Range(-rndx, rndx), Random.Range(-rndy, rndy), Random.Range(-rndz, rndz));
+    //        Vector3 scale = new Vector3(Random.Range(0, rndx), Random.Range(0, rndy), Random.Range(0, rndz));
+    //        meteoChildren[i].transform.localScale += scale;
+    //    }
+    //}
+
+
+
 
     public void RayCast(int dir, float pow) { //光の方向と強さを受け取る
         //照射方向
