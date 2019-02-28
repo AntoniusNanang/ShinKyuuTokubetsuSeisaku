@@ -13,14 +13,13 @@ public class CenterMove : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && Input.GetMouseButton(2)) { }
-        else if (Input.GetMouseButton(2))
+        if (Input.GetMouseButton(2) && !Input.GetKey(KeyCode.Space))
         {
-            angleH += Input.GetAxis("Mouse X");
-            angleV += Input.GetAxis("Mouse Y");
-            Vector3 moveForward = Camera.main.transform.up * angleV + Camera.main.transform.right * angleH;
-            moveForward.z = 0;
-            Vector3 newPos = transform.position + moveForward / 40f;
+            angleH = Input.GetAxis("Mouse X");
+            angleV = Input.GetAxis("Mouse Y");
+            Vector3 moveForward = Camera.main.transform.up * -angleV + Camera.main.transform.right * -angleH;
+            //moveForward.y = 0;
+            Vector3 newPos = transform.position + moveForward / 2.0f;
             transform.position = newPos;
         }
         else
