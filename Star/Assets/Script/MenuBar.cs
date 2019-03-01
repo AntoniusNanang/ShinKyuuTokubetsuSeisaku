@@ -26,13 +26,11 @@ public class MenuBar : MonoBehaviour {
         {
             animator.SetBool("MenuBar", true);
             click = false;
-            Debug.Log(1);
         }
         else
         {
             animator.SetBool("MenuBar", false);
             click = true;
-            Debug.Log(0);
 
         }
     }

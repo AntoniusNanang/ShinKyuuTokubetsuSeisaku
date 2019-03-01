@@ -6,6 +6,7 @@ public class Satellite_Base : MonoBehaviour {
     protected GameObject GameRoot;
     public LayerMask layermask;
     [SerializeField] protected GameObject[] line;
+    //[SerializeField] protected GameObject[] line2;
     //光の入射方向と照射方向
     [SerializeField] protected int[] afterDir = new int[8] { 0, 1, 2, 3, 4, 5, 6, 7 };
     protected Vector3[] Dir = new Vector3[8] {
@@ -32,7 +33,7 @@ public class Satellite_Base : MonoBehaviour {
     [SerializeField] protected int InLight = 0;
 
     public bool moveFlag = true;
-    float linewidth = 0.15f;
+    float linewidth = 0.05f;
 
     void Start() {
         Lightoff();
@@ -86,4 +87,10 @@ public class Satellite_Base : MonoBehaviour {
         line[lineNum[num]].GetComponent<LineRenderer>().endWidth = endpow * linewidth;
         GameRoot.GetComponent<GameDirector>().lightObj.Add(this.gameObject);
     }
+    ////光線をeffectとして飛ばす
+    //protected void drawLine2(int num, Vector3 pos, float startpow, float endpow) {
+    //    ParticleSystem line = line2[num].GetComponent<ParticleSystem>();
+    //    line
+    //    GameRoot.GetComponent<GameDirector>().lightObj.Add(this.gameObject);
+    //}
 }
