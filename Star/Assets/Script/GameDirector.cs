@@ -16,12 +16,18 @@ public class GameDirector : MonoBehaviour {
     [SerializeField] List<GameObject> MySplit = new List<GameObject>();
     //objectの保持数Text
     [SerializeField] Text[] haveLabel;
+    //触ったオブジェクトを最後に触った順にしまうリスト
+    public List<GameObject> moveObj;
+    public List<GameObject> moveObj2;
+    public List<int> moveNum;
 
     ObjectController objCon;
 
     void Start() {
         Invoke("ReLight", 2);
         objCon = GetComponent<ObjectController>();
+        moveObj.Clear();
+        moveObj2.Clear();
     }
 
 
@@ -93,22 +99,97 @@ public class GameDirector : MonoBehaviour {
         switch (obj.tag) {
             case "Mirror":
                 MyMirror.Add(obj);
+                obj.transform.parent = gameObject.transform;
                 obj.SetActive(false);
                 haveLabel[0].text = "×" + MyMirror.Count.ToString("D2");
                 break;
             case "Power":
                 MyPower.Add(obj);
+                obj.transform.parent = gameObject.transform;
                 obj.SetActive(false);
                 haveLabel[1].text = "×" + MyPower.Count.ToString("D2");
                 break;
             case "Split":
                 MySplit.Add(obj);
+                obj.transform.parent = gameObject.transform;
                 obj.SetActive(false);
                 haveLabel[2].text = "×" + MySplit.Count.ToString("D2");
                 break;
         }
 
     }
+    //操作を保存する
+    public void SaveMove(GameObject obj1, GameObject obj2, int num) {
+        moveObj.Insert(0, obj1);
+        moveObj2.Insert(0, obj2);
+        moveNum.Insert(0, num);
+    }
+
+    //操作を一つ戻す
+    public void Back() {
+        if (moveObj.Count > 0) {
+            GameObject obj = moveObj[0];
+            if (moveObj2[0].tag == "GameRoot") {
+                ChakeObj(obj);
+                Setobj(obj);
+            } else {
+                if (moveNum[0] == 0) {
+                    if (obj.transform.parent.tag == "GameRoot") {
+                        ChakeObj(obj);
+                    }
+                    moveObj2[0].GetComponent<Square>().SetObj(obj);
+                    lightObj.Add(obj);
+                } else {
+                    switch (obj.tag) {
+                        case "Mirror":
+                            obj.GetComponent<Mirror>().Spin(1);
+                            break;
+                        case "Power":
+                            obj.GetComponent<Power>().Spin(1);
+                            break;
+                        case "Split":
+                            obj.GetComponent<Split>().Spin(1);
+                            break;
+                    }
+                }
+            }
+            moveObj.RemoveAt(0);
+            moveObj2.RemoveAt(0);
+            moveNum.RemoveAt(0);
+            ReLight();
+        }
+    }
+
+    //同じものを持っていたらリストから消してくれる
+    void ChakeObj(GameObject obj) {
+        switch (obj.tag) {
+            case "Mirror":
+                for (int i = 0; i < MyMirror.Count; i++) {
+                    if (MyMirror[i] == obj) {
+                        MyMirror.RemoveAt(i);
+                        break;
+                    }
+                }
+                break;
+            case "Power":
+                for (int i = 0; i < MyPower.Count; i++) {
+                    if (MyPower[i] == obj) {
+                        MyPower.RemoveAt(i);
+                        break;
+                    }
+                }
+                break;
+            case "Split":
+                for (int i = 0; i < MySplit.Count; i++) {
+                    if (MySplit[i] == obj) {
+                        MySplit.RemoveAt(i);
+                        break;
+                    }
+                }
+                break;
+        }
+    }
+
 
     //クリア判定
     public void StarShine(){
@@ -117,6 +198,10 @@ public class GameDirector : MonoBehaviour {
             clearFlag = (clearFlag) ? Star[i].GetComponent<Star>().ShineFlag : false;
         }
         
-        if (clearFlag) { Debug.Log("Crear!!"); }
+        if (clearFlag) {
+            int count = MyMirror.Count + MyPower.Count + MySplit.Count;
+            int Score = GetComponent<StageDirector>().ScoreChake(count);
+            Debug.Log("Crear!! : " + Score);
+        }
     }
 }

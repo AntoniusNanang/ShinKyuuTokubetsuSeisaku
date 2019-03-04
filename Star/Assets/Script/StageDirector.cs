@@ -10,6 +10,8 @@ public class StageDirector : MonoBehaviour {
     static int[] startdirection;
     //保持しているギミックの数
     static int[] haveObj;
+    //評価
+    static int[] score;
     //カメラの広さ
     static int camera_;
     //マス目の親の親
@@ -82,6 +84,8 @@ public class StageDirector : MonoBehaviour {
     // Y=20～33 X=20～30
     //　光源、増幅装置、分裂装置　上0　左2　下4　右6　人工衛星　左斜め上1　左斜め下3
     int[] a03 = new int[] { 6, 1 };
+    //評価
+    int[] a04 = new int[3] { 0, 0, 1 };
 
     //*************************************************************************************************************
     //2
@@ -146,7 +150,9 @@ public class StageDirector : MonoBehaviour {
     // Y=21～30 X=21～28
     //　光源、増幅装置、分裂装置　上0　左2　下4　右6　人工衛星　左斜め上1　左斜め下3
     int[] b03 = new int[] { 4, 3 };
-    int b04 = -12;
+    int b05 = -12;
+    //評価
+    int[] b04 = new int[3] { 0, 2, 1 };
 
 
 
@@ -214,23 +220,27 @@ public class StageDirector : MonoBehaviour {
     // Y=23～28 X=21～30
     //　光源、増幅装置、分裂装置　上0　左2　下4　右6　人工衛星　左斜め上1　左斜め下3
     int[] testdirection = new int[] { 6 };
+    //評価
+    int[] testScore = new int[3] { 4, 3, 2 };
+
     //*************************************************************************************************************
 
 
     void Start() {
-        //StageSet(test, testposition, testdirection, -12);
-        //StageSet(a01, a02, a03, -12);
-        StageSet(b01, b02, b03, -12);
+        StageSet(test, testposition, testdirection, testScore, -12);
+        //StageSet(a01, a02, a03, a04, -12);
+        //StageSet(b01, b02, b03, b04, -12);
 
         CameraController.camera_z = camera_;
         CreateStage();
     }
 
     //ステージ情報を設定
-    static public void StageSet(int[,] map, int[] objects, int[] dir,int camera) {
+    static public void StageSet(int[,] map, int[] objects, int[] dir, int[] _score, int camera) {
         stageMap = map;
         startdirection = dir;
         haveObj = objects;
+        score = _score;
         camera_ = camera; 
     }
 
@@ -324,5 +334,18 @@ public class StageDirector : MonoBehaviour {
             gameDirector.Setobj(myobj);
         }
 
+    }
+
+    //手持ちのオブジェクトの数を受け取って、評価を返す
+    public int ScoreChake(int con) {
+        int count = 0;
+        for (int i = 0; i < haveObj.Length; i++) {
+            count += haveObj[i];
+        }
+        count -= con;
+        for (int i = 2; i >= 0; i--) {
+            if (count <= score[i]) return i + 1;
+        }
+        return 0;
     }
 }

@@ -79,6 +79,7 @@ public class ObjectController : MonoBehaviour {
 
     public void MoveObject(GameObject obj) {
         satellite = obj;
+        gameDirector.SaveMove(obj, obj.transform.parent.gameObject, 0);
         satellite.GetComponent<BoxCollider>().enabled = false;
         gameDirector.ReLight();
         gameDirector.lightObj.Add(satellite);

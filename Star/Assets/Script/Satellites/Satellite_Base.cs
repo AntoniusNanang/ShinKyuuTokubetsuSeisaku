@@ -40,9 +40,15 @@ public class Satellite_Base : MonoBehaviour {
     }
 
     //オブジェクトの回転
-    public void Spin() {
-        transform.Rotate(0, 0, 45 * rotate);
-        nowforward = (nowforward + rotate) % 8;
+    public void Spin(int v = 0) {
+        if (v == 0) {
+            transform.Rotate(0, 0, 45 * rotate);
+            nowforward = (nowforward + rotate) % 8;
+            GameRoot.GetComponent<GameDirector>().SaveMove(gameObject, transform.parent.gameObject, 1);
+        } else {
+            transform.Rotate(0, 0, -45 * rotate);
+            nowforward = (nowforward - rotate + 8) % 8;
+        }
     }
     
     //Rayがあたったとき

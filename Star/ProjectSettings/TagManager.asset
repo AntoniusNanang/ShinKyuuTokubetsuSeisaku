@@ -10,6 +10,7 @@ TagManager:
   - Meteo
   - Star
   - Split
+  - GameRoot
   layers:
   - Default
   - TransparentFX
