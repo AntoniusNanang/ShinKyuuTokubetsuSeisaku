@@ -216,8 +216,8 @@ public class StageDirector : MonoBehaviour {
 
 
     void Start() {
-        //StageSet(test, testposition, testdirection, -12);
-        StageSet(a01, a02, a03, -12);
+        StageSet(test, testposition, testdirection, -12);
+        //StageSet(a01, a02, a03, -12);
         //StageSet(b01, b02, b03, -12);
 
         CameraController.camera_z = camera_;

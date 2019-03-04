@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameDirector : MonoBehaviour {
     public GameObject Sun;
@@ -12,6 +13,8 @@ public class GameDirector : MonoBehaviour {
     [SerializeField] List<GameObject> MyMirror = new List<GameObject>();
     [SerializeField] List<GameObject> MyPower = new List<GameObject>();
     [SerializeField] List<GameObject> MySplit = new List<GameObject>();
+    //objectの保持数Text
+    [SerializeField] Text[] haveLabel;
 
     ObjectController objCon;
 
@@ -59,18 +62,21 @@ public class GameDirector : MonoBehaviour {
                     objCon.MoveObject(MyMirror[0]);
                     MyMirror.RemoveAt(0);
                 }
+                haveLabel[objNum].text = "×" + MyMirror.Count.ToString("D2");
                 break;
             case 1:
                 if (MyPower.Count > 0) {
                     objCon.MoveObject(MyPower[0]);
                     MyPower.RemoveAt(0);
                 }
+                haveLabel[objNum].text = "×" + MyPower.Count.ToString("D2");
                 break;
             case 2:
                 if (MySplit.Count > 0) {
                     objCon.MoveObject(MySplit[0]);
                     MySplit.RemoveAt(0);
                 }
+                haveLabel[objNum].text = "×" + MySplit.Count.ToString("D2");
                 break;
         }
             
@@ -82,14 +88,17 @@ public class GameDirector : MonoBehaviour {
             case "Mirror":
                 MyMirror.Add(obj);
                 obj.SetActive(false);
+                haveLabel[0].text = "×" + MyMirror.Count.ToString("D2");
                 break;
             case "Power":
                 MyPower.Add(obj);
                 obj.SetActive(false);
+                haveLabel[1].text = "×" + MyPower.Count.ToString("D2");
                 break;
             case "Split":
                 MySplit.Add(obj);
                 obj.SetActive(false);
+                haveLabel[2].text = "×" + MySplit.Count.ToString("D2");
                 break;
         }
 
