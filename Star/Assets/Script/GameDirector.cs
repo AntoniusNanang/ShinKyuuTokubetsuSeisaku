@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameDirector : MonoBehaviour {
-    public GameObject Sun;
+    public List<GameObject> Sun;
+    public List<GameObject> Star;
     //光源のスタート方向
-    public int StartDir = 6;
+    public List<int> StartDir;
     //光を飛ばしているオブジェクト
     public List<GameObject> lightObj = new List<GameObject>();
     //手持ち
@@ -41,17 +42,22 @@ public class GameDirector : MonoBehaviour {
             case "Meteo":
                 obj.GetComponent<Meteo>().Lightoff();
                 break;
+            case "Star":
+                obj.GetComponent<Star>().Lightoff();
+                break;
         }
 
     }
 
 
     public void ReLight() {
+        for (int i = 0; i < Star.Count; i++) Star[i].GetComponent<Star>().Lightoff();
         for (int i = 0; i < lightObj.Count; i++) {
             Lightoff(lightObj[i]);
         }
         lightObj.Clear();
-        Sun.GetComponent<Sun>().RayCast(StartDir, 4);
+        for (int i = 0; i < Sun.Count; i++) Sun[i].GetComponent<Sun>().RayCast(StartDir[i], 4);
+
     }
 
     //手持ちからobjectを出す
@@ -79,7 +85,7 @@ public class GameDirector : MonoBehaviour {
                 haveLabel[objNum].text = "×" + MySplit.Count.ToString("D2");
                 break;
         }
-            
+
     }
 
     //手持ちにobjectを戻す
@@ -102,5 +108,15 @@ public class GameDirector : MonoBehaviour {
                 break;
         }
 
+    }
+
+    //クリア判定
+    public void StarShine(){
+        bool clearFlag = true;
+        for (int i = 0; i < Star.Count; i++) {
+            clearFlag = (clearFlag) ? Star[i].GetComponent<Star>().ShineFlag : false;
+        }
+        
+        if (clearFlag) { Debug.Log("Crear!!"); }
     }
 }

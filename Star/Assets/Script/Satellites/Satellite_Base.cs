@@ -63,6 +63,7 @@ public class Satellite_Base : MonoBehaviour {
                 obj.GetComponent<Meteo>().RayCast(dir, pow);
                 break;
             case "Star":
+                obj.GetComponent<Star>().Shine();
                 break;
         }
     }

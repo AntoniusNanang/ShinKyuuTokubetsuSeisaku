@@ -18,6 +18,8 @@ public class StageDirector : MonoBehaviour {
     [SerializeField] GameObject[] Prefabs;
     //初期位置
     Vector3 startPos = new Vector3(0, 0, -5);
+    //動かないオブジェクトのマスのマテリアル
+    [SerializeField] Material squaresMaterial;
 
     //************************************************************************************************************
     //1
@@ -216,9 +218,9 @@ public class StageDirector : MonoBehaviour {
 
 
     void Start() {
-        StageSet(test, testposition, testdirection, -12);
+        //StageSet(test, testposition, testdirection, -12);
         //StageSet(a01, a02, a03, -12);
-        //StageSet(b01, b02, b03, -12);
+        StageSet(b01, b02, b03, -12);
 
         CameraController.camera_z = camera_;
         CreateStage();
@@ -254,23 +256,28 @@ public class StageDirector : MonoBehaviour {
                     case 2:
                         obj = Instantiate(Prefabs[0]);
                         square.GetComponent<Square>().SetObj(obj);
-                        gameDirector.StartDir = startdirection[countObj];
-                        gameDirector.Sun = obj;
+                        square.GetComponent<Renderer>().material = squaresMaterial;
+                        gameDirector.StartDir.Add(startdirection[countObj]);
+                        gameDirector.Sun.Add(obj);
                         obj.GetComponent<Sun>().Lightoff();
                         countObj++;
                         break;
                     case 3:
                         obj = Instantiate(Prefabs[1]);
                         square.GetComponent<Square>().SetObj(obj);
+                        square.GetComponent<Renderer>().material = squaresMaterial;
+                        gameDirector.Star.Add(obj);
                         break;
                     case 4:
                         obj = Instantiate(Prefabs[2]);
                         square.GetComponent<Square>().SetObj(obj);
+                        square.GetComponent<Renderer>().material = squaresMaterial;
                         obj.GetComponent<Meteo>().Lightoff();
                         break;
                     case 5:
                         obj = Instantiate(Prefabs[3]);
                         square.GetComponent<Square>().SetObj(obj);
+                        square.GetComponent<Renderer>().material = squaresMaterial;
                         obj.GetComponent<Mirror>().nowforward = startdirection[countObj];
                         obj.transform.Rotate(0, 0, 45 * startdirection[countObj]);
                         obj.GetComponent<Mirror>().Lightoff();
@@ -280,6 +287,7 @@ public class StageDirector : MonoBehaviour {
                     case 6:
                         obj = Instantiate(Prefabs[4]);
                         square.GetComponent<Square>().SetObj(obj);
+                        square.GetComponent<Renderer>().material = squaresMaterial;
                         obj.GetComponent<Power>().nowforward = startdirection[countObj];
                         obj.transform.Rotate(0, 0, 45 * startdirection[countObj]);
                         obj.GetComponent<Power>().Lightoff();
@@ -289,6 +297,7 @@ public class StageDirector : MonoBehaviour {
                     case 7:
                         obj = Instantiate(Prefabs[5]);
                         square.GetComponent<Square>().SetObj(obj);
+                        square.GetComponent<Renderer>().material = squaresMaterial;
                         obj.GetComponent<Split>().nowforward = startdirection[countObj];
                         obj.transform.Rotate(0, 0, 45 * startdirection[countObj]);
                         obj.GetComponent<Split>().Lightoff();
