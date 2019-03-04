@@ -315,6 +315,8 @@ MonoBehaviour:
     m_Bits: 256
   line:
   - {fileID: 1535001354671800}
+  line2:
+  - {fileID: 0}
   afterDir: 00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   lineNum: 0000000000000000000000000000000000000000000000000000000000000000
   afterPow: 2

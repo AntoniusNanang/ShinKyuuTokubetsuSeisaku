@@ -38,8 +38,10 @@ public class ObjectController : MonoBehaviour {
             //右クリックでオブジェクトの回転
         } else if (Input.GetMouseButtonDown(1) && !Input.GetMouseButton(2)) {
             if (Physics.Raycast(ray, out hit, raydistans, satellitemask)) {
-                Spin(hit.collider.gameObject);
-                gameDirector.ReLight();
+                if (Moveflag(hit.collider.gameObject)) {
+                    Spin(hit.collider.gameObject);
+                    gameDirector.ReLight();
+                }
             }
         } else if (Input.GetMouseButtonUp(0) && satellite != null) {
             satellite.GetComponent<BoxCollider>().enabled = true;

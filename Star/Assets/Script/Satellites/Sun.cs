@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Sun : Satellite_Base {
-    float rotateSpeed = -3f;
+    //float rotateSpeed = -3f;
 
-    void Update() {
-        //回転
-        transform.Rotate(rotateSpeed * Time.deltaTime, rotateSpeed * Time.deltaTime * 5, 0);
-    }
+    //void Update() {
+    //    //回転
+    //    transform.Rotate(rotateSpeed * Time.deltaTime, rotateSpeed * Time.deltaTime * 5, 0);
+    //}
 
     public void RayCast(int dir, float pow) { //光の方向と強さを受け取る
         //照射方向

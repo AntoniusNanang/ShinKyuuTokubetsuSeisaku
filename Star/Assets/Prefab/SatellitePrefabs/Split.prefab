@@ -523,6 +523,10 @@ MonoBehaviour:
   - {fileID: 1825384245567430}
   - {fileID: 1693683319371350}
   - {fileID: 1452319501499518}
+  line2:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   afterDir: ffffffffffffffff00000000ffffffff02000000ffffffff06000000ffffffff
   lineNum: 0000000000000000010000000000000000000000000000000200000000000000
   afterPow: 0.5

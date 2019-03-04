@@ -89,6 +89,9 @@ public class Split : Satellite_Base {
             line[i].GetComponent<LineRenderer>().SetPosition(0, transform.position);
             line[i].GetComponent<LineRenderer>().SetPosition(1, transform.position);
         }
+        //for (int i = 0; i < line2.Length; i++) {
+        //    line2[i].SetActive(false);
+        //}
         InLight = 0;
         backupDir = -1;
         backupPow = 0;
