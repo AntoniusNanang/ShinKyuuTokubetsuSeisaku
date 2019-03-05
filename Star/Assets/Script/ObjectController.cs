@@ -48,8 +48,12 @@ public class ObjectController : MonoBehaviour {
             satellite.GetComponent<BoxCollider>().enabled = true;
             UIMove(true);
             if (Physics.Raycast(ray, out hit, raydistans, squaremask)) {
-                bool flag = hit.collider.GetComponent<Square>().SetObj(satellite);
-                if (!flag) gameDirector.Setobj(satellite);
+                if (hit.collider.tag == "Square") {
+                    bool flag = hit.collider.GetComponent<Square>().SetObj(satellite);
+                    if (!flag) gameDirector.Setobj(satellite);
+                } else {
+                    gameDirector.Setobj(satellite);
+                }
             } else {
                 gameDirector.Setobj(satellite);
             }
@@ -58,8 +62,12 @@ public class ObjectController : MonoBehaviour {
         }
         if (satellite != null) {
             if (Physics.Raycast(ray, out hit, raydistans, squaremask)) {
-                bool flag = hit.collider.GetComponent<Square>().SetObj(satellite);
-                UIMove(flag);
+                if (hit.collider.tag == "Square") {
+                    bool flag = hit.collider.GetComponent<Square>().SetObj(satellite);
+                    UIMove(flag);
+                } else {
+                    UIMove(false);
+                }
             } else {
                 UIMove(false);
             }
