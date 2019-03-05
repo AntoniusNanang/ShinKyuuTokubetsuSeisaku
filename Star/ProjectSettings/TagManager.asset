@@ -11,6 +11,7 @@ TagManager:
   - Star
   - Split
   - GameRoot
+  - Square
   layers:
   - Default
   - TransparentFX
