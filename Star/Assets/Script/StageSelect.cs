@@ -19,9 +19,8 @@ public class StageSelect : MonoBehaviour {
 		
 	}
 
-    public void select(int a)
+    public void select(string a)
     {
-        //StageDirector.StageSet(stage, obj, dir, cam);
 
     }
 }
