@@ -4,34 +4,25 @@ using UnityEngine;
 
 public class MenuBar : MonoBehaviour {
 
-    
-    public Animator animator;
-    bool click = true;
+    public GameObject menu;
+  
     // Use this for initialization
     void Start () {
-		
+        menu.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            OnClick();
-        }
+       
     }
 
-    public void OnClick()
+    public void Open()
     {
-        if (click)
-        {
-            animator.SetBool("MenuBar", true);
-            click = false;
-        }
-        else
-        {
-            animator.SetBool("MenuBar", false);
-            click = true;
+        menu.SetActive(true);
+    }
 
-        }
+    public void Close()
+    {
+        menu.SetActive(false);
     }
 }
