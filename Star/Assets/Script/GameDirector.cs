@@ -68,30 +68,31 @@ public class GameDirector : MonoBehaviour {
 
     //手持ちからobjectを出す
     public void Getobj(int objNum) {
-        switch (objNum) {
-            case 0:
-                if (MyMirror.Count > 0) {
-                    objCon.MoveObject(MyMirror[0]);
-                    MyMirror.RemoveAt(0);
-                }
-                haveLabel[objNum].text = "×" + MyMirror.Count.ToString("D2");
-                break;
-            case 1:
-                if (MyPower.Count > 0) {
-                    objCon.MoveObject(MyPower[0]);
-                    MyPower.RemoveAt(0);
-                }
-                haveLabel[objNum].text = "×" + MyPower.Count.ToString("D2");
-                break;
-            case 2:
-                if (MySplit.Count > 0) {
-                    objCon.MoveObject(MySplit[0]);
-                    MySplit.RemoveAt(0);
-                }
-                haveLabel[objNum].text = "×" + MySplit.Count.ToString("D2");
-                break;
+        if (!Input.GetMouseButton(1) && !Input.GetMouseButton(2)) {
+            switch (objNum) {
+                case 0:
+                    if (MyMirror.Count > 0) {
+                        objCon.MoveObject(MyMirror[0]);
+                        MyMirror.RemoveAt(0);
+                    }
+                    haveLabel[objNum].text = "×" + MyMirror.Count.ToString("D2");
+                    break;
+                case 1:
+                    if (MyPower.Count > 0) {
+                        objCon.MoveObject(MyPower[0]);
+                        MyPower.RemoveAt(0);
+                    }
+                    haveLabel[objNum].text = "×" + MyPower.Count.ToString("D2");
+                    break;
+                case 2:
+                    if (MySplit.Count > 0) {
+                        objCon.MoveObject(MySplit[0]);
+                        MySplit.RemoveAt(0);
+                    }
+                    haveLabel[objNum].text = "×" + MySplit.Count.ToString("D2");
+                    break;
+            }
         }
-
     }
 
     //手持ちにobjectを戻す
