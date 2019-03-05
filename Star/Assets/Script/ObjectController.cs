@@ -43,7 +43,8 @@ public class ObjectController : MonoBehaviour {
                     gameDirector.ReLight();
                 }
             }
-        } else if (Input.GetMouseButtonUp(0) && satellite != null) {
+        }
+        if (Input.GetMouseButtonUp(0) && satellite != null) {
             satellite.GetComponent<BoxCollider>().enabled = true;
             UIMove(true);
             if (Physics.Raycast(ray, out hit, raydistans, squaremask)) {
