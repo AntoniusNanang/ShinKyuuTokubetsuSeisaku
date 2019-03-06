@@ -15,12 +15,16 @@ public class ObjectController : MonoBehaviour {
     //object移動(UI)
     [SerializeField] GameObject[] satelliteUI;
     RectTransform[] rectTransform;
+    //表示されているマス目
+    GameObject OnSquare = null;
+    //マス目を表示させるためのメッシュ
+    [SerializeField] Mesh _mesh;
 
 
     void Start() {
         gameDirector = GetComponent<GameDirector>();
         rectTransform = new RectTransform[satelliteUI.Length];
-        for(int i = 0; i < satelliteUI.Length; i++) {
+        for (int i = 0; i < satelliteUI.Length; i++) {
             rectTransform[i] = satelliteUI[i].GetComponent<RectTransform>();
         }
     }
@@ -72,6 +76,18 @@ public class ObjectController : MonoBehaviour {
                 UIMove(false);
             }
         }
+        //マウスカーソルがマス目に重なったら表示する
+        if (OnSquare != null) {
+            OnSquare.GetComponent<MeshFilter>().mesh = null;
+        }
+        Ray ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit2;
+        if (Physics.Raycast(ray, out hit, raydistans, squaremask)) {
+            if (hit.collider.tag == "Square") {
+                hit.collider.gameObject.GetComponent<MeshFilter>().mesh = _mesh;
+                OnSquare = hit.collider.gameObject;
+            }
+        }
     }
 
     bool Moveflag(GameObject obj) {
@@ -112,7 +128,7 @@ public class ObjectController : MonoBehaviour {
 
     void UIMove(bool flag) {
         if (flag) {
-            foreach(GameObject obj in satelliteUI) {
+            foreach (GameObject obj in satelliteUI) {
                 obj.SetActive(false);
             }
             satellite.SetActive(true);
