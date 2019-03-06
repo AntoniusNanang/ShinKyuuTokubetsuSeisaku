@@ -43,7 +43,9 @@ public class NewBehaviourScript : MonoBehaviour
         //カメラの広さ(ステージの広さ)
         int camera = -20;
 
-        StageDirector.StageSet(stage, direction, obj, score, camera);
+        Vector3 center = new Vector3(1, 1, 0);
+
+        StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }
 
     /*

@@ -8,7 +8,7 @@ public class MenuBar : MonoBehaviour {
   
     // Use this for initialization
     void Start () {
-        menu.SetActive(false);
+        //menu.SetActive(false);
 	}
 	
 	// Update is called once per frame

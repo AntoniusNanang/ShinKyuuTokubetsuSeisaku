@@ -43,12 +43,15 @@ public class s3 : MonoBehaviour
         int[] score = { 0, 0, 1 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -20;
+        int camera = -4;
 
-        StageDirector.StageSet(stage, direction, obj, score, camera);
+        //カメラ初期位置
+        Vector3 center = new Vector3(2, -1.5f, 0);
+
+        StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }
 
-    public void s1_1()
+    public void s302()
     {
         //ステージマップ
         //　0=空白　1=空白マス　2=光源　3=クリア地点　4=隕石　5=人工衛星　6=増幅装置　7=分裂装置
@@ -86,12 +89,15 @@ public class s3 : MonoBehaviour
         int[] score = { 0, 0, 1 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -20;
+        int camera = -7;
 
-        StageDirector.StageSet(stage, direction, obj, score, camera);
+        //カメラ初期位置
+        Vector3 center = new Vector3(2.5f, -3, 0);
+
+        StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }
 
-    public void s1_1()
+    public void s303()
     {
         //ステージマップ
         //　0=空白　1=空白マス　2=光源　3=クリア地点　4=隕石　5=人工衛星　6=増幅装置　7=分裂装置
@@ -129,9 +135,12 @@ public class s3 : MonoBehaviour
         int[] score = { 0, 0, 3 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -20;
+        int camera = -10;
 
-        StageDirector.StageSet(stage, direction, obj, score, camera);
+        //カメラ初期位置
+        Vector3 center = new Vector3(4.5f, -3, 0);
+
+        StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }
 
 }

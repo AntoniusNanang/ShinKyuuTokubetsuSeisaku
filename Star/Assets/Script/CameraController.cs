@@ -85,7 +85,7 @@ public class CameraController : MonoBehaviour {
 
     public void CameraReset()
     {
-        transform.position = startPos;
+        //transform.position = startPos;
         transform.rotation = startRote;
         centerObj.transform.position = startPosC;
     }

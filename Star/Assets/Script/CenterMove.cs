@@ -6,13 +6,15 @@ public class CenterMove : MonoBehaviour
 {
     float angleH;
     float angleV;
+    static public Vector3 centerPos;
     void Start()
     {
-        transform.position = new Vector3(0, 0, 0);
+        Invoke("pos", 0.001f);
     }
 
     void Update()
     {
+
         if (Input.GetMouseButton(2) && !Input.GetKey(KeyCode.Space))
         {
             angleH = Input.GetAxis("Mouse X");
@@ -28,6 +30,11 @@ public class CenterMove : MonoBehaviour
             angleV = 0f;
         }
 
+    }
+
+    void pos()
+    {
+        transform.position = centerPos;
     }
 
 }

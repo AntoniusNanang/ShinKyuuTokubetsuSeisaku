@@ -43,9 +43,12 @@ public class s1 : MonoBehaviour
         int[] score = { 0, 0, 1 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -20;
+        int camera = -3;
 
-        StageDirector.StageSet(stage, direction, obj, score, camera);
+        //カメラ初期位置
+        Vector3 center = new Vector3(1, -1, 0);
+
+        StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }
 
     public void s102()
@@ -86,9 +89,12 @@ public class s1 : MonoBehaviour
         int[] score = { 0, 0, 1 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -20;
+        int camera = -3;
 
-        StageDirector.StageSet(stage, direction, obj, score, camera);
+        //カメラ初期位置
+        Vector3 center = new Vector3(1, -1, 0);
+
+        StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }
 
     public void s103()
@@ -129,9 +135,12 @@ public class s1 : MonoBehaviour
         int[] score = { 0, 0, 1 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -20;
+        int camera = -5;
 
-        StageDirector.StageSet(stage, direction, obj, score, camera);
+        //カメラ初期位置
+        Vector3 center = new Vector3(2, -1, 0);
+
+        StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }
 
     public void s104()
@@ -172,9 +181,12 @@ public class s1 : MonoBehaviour
         int[] score = { 0, 0, 1 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -20;
+        int camera = -9;
 
-        StageDirector.StageSet(stage, direction, obj, score, camera);
+        //カメラ初期位置
+        Vector3 center = new Vector3(4, -1, 0);
+
+        StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }
 
     public void s105()
@@ -215,9 +227,12 @@ public class s1 : MonoBehaviour
         int[] score = { 5, 4, 3 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -20;
+        int camera = -5;
 
-        StageDirector.StageSet(stage, direction, obj, score, camera);
+        //カメラ初期位置
+        Vector3 center = new Vector3(2, -2, 0);
+
+        StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }
 
 }

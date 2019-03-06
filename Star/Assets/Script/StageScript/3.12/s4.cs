@@ -43,9 +43,12 @@ public class s4 : MonoBehaviour
         int[] score = { 5, 4, 3 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -20;
+        int camera = -9;
 
-        StageDirector.StageSet(stage, direction, obj, score, camera);
+        //カメラ初期位置
+        Vector3 center = new Vector3(3, -4, 0);
+
+        StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }
 
     public void s402()
@@ -86,9 +89,12 @@ public class s4 : MonoBehaviour
         int[] score = { 6, 5, 4 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -20;
+        int camera = -7;
 
-        StageDirector.StageSet(stage, direction, obj, score, camera);
+        //カメラ初期位置
+        Vector3 center = new Vector3(3, -3, 0);
+
+        StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }
 
 }

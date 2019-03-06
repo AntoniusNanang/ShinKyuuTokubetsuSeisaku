@@ -14,6 +14,8 @@ public class StageDirector : MonoBehaviour {
     static int[] score;
     //カメラの広さ
     static int camera_;
+    //カメラの初期位置
+    static Vector3 center_;
     //マス目の親の親
     [SerializeField] GameObject squaresParent;
     //Prefab
@@ -57,21 +59,24 @@ public class StageDirector : MonoBehaviour {
     //評価
     int[] a04 = new int[3] { 0, 0, 1 };
 
+    Vector3 a05 = new Vector3(9.5f, -9.5f, 0);
+
 
     void Start() {
-        StageSet(a01, a02, a03, a04, -12);
-
+        StageSet(a01, a02, a03, a04, -12, a05);
+        CenterMove.centerPos = center_;
         CameraController.camera_z = camera_;
         CreateStage();
     }
 
     //ステージ情報を設定
-    static public void StageSet(int[,] map, int[] objects, int[] dir, int[] _score, int camera) {
+    static public void StageSet(int[,] map, int[] objects, int[] dir, int[] _score, int camera,Vector3 center) {
         stageMap = map;
         startdirection = dir;
         haveObj = objects;
         score = _score;
-        camera_ = camera; 
+        camera_ = camera;
+        center_ = center;
     }
 
     //ステージを生成
