@@ -63,14 +63,14 @@ public class StageDirector : MonoBehaviour {
 
 
     void Start() {
-        StageSet(a01, a02, a03, a04, -12, a05);
+        //StageSet(a01, a03, a02, a04, -12, a05);
         CenterMove.centerPos = center_;
         CameraController.camera_z = camera_;
         CreateStage();
     }
 
     //ステージ情報を設定
-    static public void StageSet(int[,] map, int[] objects, int[] dir, int[] _score, int camera,Vector3 center) {
+    static public void StageSet(int[,] map, int[] dir, int[] objects, int[] _score, int camera,Vector3 center) {
         stageMap = map;
         startdirection = dir;
         haveObj = objects;

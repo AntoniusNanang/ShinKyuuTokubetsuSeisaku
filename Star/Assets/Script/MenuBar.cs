@@ -10,12 +10,6 @@ public class MenuBar : MonoBehaviour {
     void Start () {
         //menu.SetActive(false);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-       
-    }
-
     public void Open()
     {
         menu.SetActive(true);
