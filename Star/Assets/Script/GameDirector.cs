@@ -16,7 +16,8 @@ public class GameDirector : MonoBehaviour {
     [SerializeField] List<GameObject> MySplit = new List<GameObject>();
     //objectの保持数Text
     [SerializeField] Text[] haveLabel;
-
+    //音
+    [SerializeField] AudioSource[] audiosource; //0　戻る, 1　クリア
     ObjectController objCon;
 
     void Start() {
@@ -111,7 +112,7 @@ public class GameDirector : MonoBehaviour {
                 haveLabel[2].text = "×" + MySplit.Count.ToString("D2");
                 break;
         }
-
+        audiosource[0].Play();
     }
     
     //クリア判定
@@ -122,6 +123,7 @@ public class GameDirector : MonoBehaviour {
         }
         
         if (clearFlag) {
+            audiosource[1].PlayDelayed(5f);
             int count = MyMirror.Count + MyPower.Count + MySplit.Count;
             int Score = GetComponent<StageDirector>().ScoreChake(count);
             Debug.Log("Crear!! : " + Score);
