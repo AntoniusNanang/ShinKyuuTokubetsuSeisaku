@@ -7,8 +7,6 @@ public class ObjectController : MonoBehaviour {
     public LayerMask squaremask;
     //移動中のオブジェクト
     GameObject satellite = null;
-    //移動中のオブジェクトの前の親
-    GameObject satelliteParent = null;
     //Rayの長さ
     float raydistans = 70;
     GameDirector gameDirector;
@@ -106,7 +104,6 @@ public class ObjectController : MonoBehaviour {
 
     public void MoveObject(GameObject obj) {
         satellite = obj;
-        gameDirector.SaveMove(obj, obj.transform.parent.gameObject, 0);
         satellite.GetComponent<BoxCollider>().enabled = false;
         gameDirector.ReLight();
         gameDirector.lightObj.Add(satellite);
