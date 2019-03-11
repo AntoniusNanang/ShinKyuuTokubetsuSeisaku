@@ -48,7 +48,7 @@ public class s3 : MonoBehaviour
         StageDirector.StageSet(stage, direction, obj, score, camera);
     }
 
-    public void s1_1()
+    public void s302()
     {
         //ステージマップ
         //　0=空白　1=空白マス　2=光源　3=クリア地点　4=隕石　5=人工衛星　6=増幅装置　7=分裂装置
@@ -91,7 +91,7 @@ public class s3 : MonoBehaviour
         StageDirector.StageSet(stage, direction, obj, score, camera);
     }
 
-    public void s1_1()
+    public void s303()
     {
         //ステージマップ
         //　0=空白　1=空白マス　2=光源　3=クリア地点　4=隕石　5=人工衛星　6=増幅装置　7=分裂装置

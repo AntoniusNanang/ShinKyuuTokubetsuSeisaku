@@ -77,16 +77,18 @@ public class ObjectController : MonoBehaviour {
             }
         }
         //マウスカーソルがマス目に重なったら表示する
-        if (OnSquare != null) {
-            OnSquare.GetComponent<MeshFilter>().mesh = null;
-        }
         Ray ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit2;
-        if (Physics.Raycast(ray, out hit, raydistans, squaremask)) {
-            if (hit.collider.tag == "Square") {
-                hit.collider.gameObject.GetComponent<MeshFilter>().mesh = _mesh;
-                OnSquare = hit.collider.gameObject;
+        if (Physics.Raycast(ray2, out hit2, raydistans, squaremask)) {
+            GameObject obj = hit2.collider.gameObject;
+            if (obj.tag == "Square" && obj != OnSquare) {
+                if (OnSquare != null && OnSquare.tag == "Square") OnSquare.GetComponent<MeshFilter>().mesh = null;
+                obj.GetComponent<MeshFilter>().mesh = _mesh;
+                OnSquare = obj;
             }
+        } else if (OnSquare != null && OnSquare.tag == "Square") {
+            OnSquare.GetComponent<MeshFilter>().mesh = null;
+            OnSquare = null;
         }
     }
 
