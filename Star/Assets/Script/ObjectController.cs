@@ -7,8 +7,6 @@ public class ObjectController : MonoBehaviour {
     public LayerMask squaremask;
     //移動中のオブジェクト
     GameObject satellite = null;
-    //移動中のオブジェクトの前の親
-    GameObject satelliteParent = null;
     //Rayの長さ
     float raydistans = 70;
     GameDirector gameDirector;
@@ -19,7 +17,8 @@ public class ObjectController : MonoBehaviour {
     GameObject OnSquare = null;
     //マス目を表示させるためのメッシュ
     [SerializeField] Mesh _mesh;
-
+    //音
+    [SerializeField] AudioSource[] audiosource; //0　設置, 1　回転, 2　移動
 
     void Start() {
         gameDirector = GetComponent<GameDirector>();
@@ -44,6 +43,7 @@ public class ObjectController : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, raydistans, satellitemask)) {
                 if (Moveflag(hit.collider.gameObject)) {
                     Spin(hit.collider.gameObject);
+                    audiosource[1].Play();
                     gameDirector.ReLight();
                 }
             }
@@ -55,6 +55,7 @@ public class ObjectController : MonoBehaviour {
                 if (hit.collider.tag == "Square") {
                     bool flag = hit.collider.GetComponent<Square>().SetObj(satellite);
                     if (!flag) gameDirector.Setobj(satellite);
+                    else audiosource[0].Play();
                 } else {
                     gameDirector.Setobj(satellite);
                 }
@@ -105,8 +106,8 @@ public class ObjectController : MonoBehaviour {
     }
 
     public void MoveObject(GameObject obj) {
+        audiosource[2].Play();
         satellite = obj;
-        gameDirector.SaveMove(obj, obj.transform.parent.gameObject, 0);
         satellite.GetComponent<BoxCollider>().enabled = false;
         gameDirector.ReLight();
         gameDirector.lightObj.Add(satellite);

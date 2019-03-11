@@ -1,5 +1,5 @@
 SE01 マス目
-SE02 Obj取り出し
+SE02 Obj移動
 SE03 Obj設置
 SE04 Obj戻る
 SE05 回転
