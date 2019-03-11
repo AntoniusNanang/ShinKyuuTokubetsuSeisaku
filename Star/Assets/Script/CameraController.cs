@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
-    GameObject targetObj;
     GameObject centerObj;
     Vector3 startPos;
     Vector3 startPosC;
     Quaternion startRote;
-    Vector3 targetPos;
     float LastX;
     float LastY;
     static public float camera_z = -50;
@@ -16,12 +14,8 @@ public class CameraController : MonoBehaviour {
     void Start()
     {
         transform.position = new Vector3(0, 0, camera_z);
-        targetObj = GameObject.Find("target");
         centerObj = GameObject.Find("Center");
-        startPosC = centerObj.transform.position;
-        startPos = transform.position;
-        startRote = transform.rotation;
-        targetPos = targetObj.transform.position;
+        Invoke("startpos", 0.1f);
     }
 
     void Update()
@@ -32,8 +26,8 @@ public class CameraController : MonoBehaviour {
             float mouseInputY = Input.GetAxis("Mouse Y");
             LastX = mouseInputX;
             LastY = mouseInputY;
-            transform.RotateAround(targetPos, transform.up, mouseInputX * Time.deltaTime * 400f);
-            transform.RotateAround(targetPos, transform.right, mouseInputY * Time.deltaTime * 400f);
+            transform.RotateAround(startPosC, transform.up, mouseInputX * Time.deltaTime * 400f);
+            transform.RotateAround(startPosC, transform.right, mouseInputY * Time.deltaTime * 400f);
         }
 
         if (LastX > 0.0f)
@@ -52,7 +46,7 @@ public class CameraController : MonoBehaviour {
                 LastX = 0.0f;
             }
         }
-        transform.RotateAround(targetPos, transform.up, LastX * Time.deltaTime * 400f);
+        transform.RotateAround(startPosC, transform.up, LastX * Time.deltaTime * 400f);
 
 
         if (LastY > 0.0f)
@@ -71,7 +65,7 @@ public class CameraController : MonoBehaviour {
                 LastY = 0.0f;
             }
         }
-        transform.RotateAround(targetPos, transform.right, LastY * Time.deltaTime * 400f);
+        transform.RotateAround(startPosC, transform.right, LastY * Time.deltaTime * 400f);
 
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -83,10 +77,19 @@ public class CameraController : MonoBehaviour {
         transform.position += transform.forward * scroll * 3;
     }
 
+    public void startpos()
+    {
+        startPosC = centerObj.transform.position;
+        startPos = transform.position;
+        startRote = transform.rotation;
+    }
+
     public void CameraReset()
     {
-        //transform.position = startPos;
-        transform.rotation = startRote;
+        LastX = 0;
+        LastY = 0;
         centerObj.transform.position = startPosC;
+        transform.position = startPos;
+        transform.rotation = startRote;
     }
 }
