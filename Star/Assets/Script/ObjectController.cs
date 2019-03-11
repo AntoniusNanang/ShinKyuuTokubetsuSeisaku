@@ -38,8 +38,9 @@ public class ObjectController : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, raydistans, satellitemask)) {
                 if (Moveflag(hit.collider.gameObject)) MoveObject(hit.collider.gameObject);
             }
-            //右クリックでオブジェクトの回転
-        } else if (Input.GetMouseButtonDown(1) && !Input.GetMouseButton(2)) {
+        }
+        //右クリックでオブジェクトの回転
+        if (Input.GetMouseButtonDown(1) && !Input.GetMouseButton(2) && !Input.GetMouseButton(0)) {
             if (Physics.Raycast(ray, out hit, raydistans, satellitemask)) {
                 if (Moveflag(hit.collider.gameObject)) {
                     Spin(hit.collider.gameObject);
@@ -49,6 +50,7 @@ public class ObjectController : MonoBehaviour {
             }
         }
         if (Input.GetMouseButtonUp(0) && satellite != null) {
+            gameDirector.lightObj.Add(satellite);
             satellite.GetComponent<BoxCollider>().enabled = true;
             UIMove(true);
             if (Physics.Raycast(ray, out hit, raydistans, squaremask)) {
