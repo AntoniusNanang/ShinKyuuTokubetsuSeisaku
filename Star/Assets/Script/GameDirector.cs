@@ -24,6 +24,12 @@ public class GameDirector : MonoBehaviour {
         Invoke("ReLight", 2);
         objCon = GetComponent<ObjectController>();
     }
+    
+    //α版用の救済処置
+    void Update() {
+        if (Input.GetKey(KeyCode.Return)) GameObject.Find("MenuSystem").GetComponent<SceneMove>().OnClick("StageSelect");
+    }
+    //α版用の救済処置
 
 
     void Lightoff(GameObject obj) {
