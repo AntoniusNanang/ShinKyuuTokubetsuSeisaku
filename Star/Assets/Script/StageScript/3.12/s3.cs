@@ -43,7 +43,7 @@ public class s3 : MonoBehaviour
         int[] score = { 0, 0, 1 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -4;
+        int camera = -6;
 
         //カメラ初期位置
         Vector3 center = new Vector3(2, -1.5f, 0);
@@ -89,7 +89,7 @@ public class s3 : MonoBehaviour
         int[] score = { 0, 0, 1 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -7;
+        int camera = -9;
 
         //カメラ初期位置
         Vector3 center = new Vector3(2.5f, -3, 0);
@@ -135,7 +135,7 @@ public class s3 : MonoBehaviour
         int[] score = { 0, 0, 3 };
 
         //カメラの広さ(ステージの広さ)
-        int camera = -10;
+        int camera = -12;
 
         //カメラ初期位置
         Vector3 center = new Vector3(4.5f, -3, 0);
