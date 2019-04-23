@@ -24,10 +24,17 @@ public class CameraController : MonoBehaviour {
         {
             float mouseInputX = Input.GetAxis("Mouse X");
             float mouseInputY = Input.GetAxis("Mouse Y");
+
+            if (mouseInputX < -5.0f) mouseInputX = -5.0f;
+            else if (mouseInputX > 5.0f) mouseInputX = 5.0f;
+
+            if (mouseInputY < -5.0f) mouseInputY = -5.0f;
+            else if (mouseInputY > 5.0f) mouseInputY = 5.0f;
+            
             LastX = mouseInputX;
             LastY = mouseInputY;
-            transform.RotateAround(startPosC, transform.up, mouseInputX * Time.deltaTime * 400f);
-            transform.RotateAround(startPosC, transform.right, mouseInputY * Time.deltaTime * 400f);
+            transform.RotateAround(centerObj.transform.position, transform.up, mouseInputX * Time.deltaTime * 400f);
+            transform.RotateAround(centerObj.transform.position, transform.right, mouseInputY * Time.deltaTime * 400f);
         }
 
         if (LastX > 0.0f)
@@ -46,7 +53,7 @@ public class CameraController : MonoBehaviour {
                 LastX = 0.0f;
             }
         }
-        transform.RotateAround(startPosC, transform.up, LastX * Time.deltaTime * 400f);
+        transform.RotateAround(centerObj.transform.position, transform.up, LastX * Time.deltaTime * 400f);
 
 
         if (LastY > 0.0f)
@@ -65,7 +72,7 @@ public class CameraController : MonoBehaviour {
                 LastY = 0.0f;
             }
         }
-        transform.RotateAround(startPosC, transform.right, LastY * Time.deltaTime * 400f);
+        transform.RotateAround(centerObj.transform.position, transform.right, LastY * Time.deltaTime * 400f);
 
 
         if (Input.GetKeyDown(KeyCode.R))
