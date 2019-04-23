@@ -8,6 +8,9 @@ public class SceneMove : MonoBehaviour {
     public void OnClick(string SceneName)
     {
         SceneManager.LoadScene(SceneName);
+        FadeSystem.isFade = true;
+        FadeSystem.isFadeOut = true;
+
     }
 
 }

@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7f3b99e4c06b443a83e062f51936ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Fade_Image: {fileID: 262040761}
   FadeImage: {fileID: 262040763}
   SceneName: StageSelect
 --- !u!1 &262040761

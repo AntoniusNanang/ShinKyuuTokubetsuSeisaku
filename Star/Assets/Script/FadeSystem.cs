@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class FadeSystem : MonoBehaviour {
 
+    public GameObject Fade_Image;
     public Image FadeImage;
     public string SceneName;
 
@@ -17,6 +18,7 @@ public class FadeSystem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Fade_Image.SetActive(true);
 
         alpha = 1.0f;
         isFade = true;
@@ -32,6 +34,10 @@ public class FadeSystem : MonoBehaviour {
         {
             if (isFadeIn)          FadeIn();
             else if (isFadeOut)    FadeOut();
+        }
+        else if(!isFade)
+        {
+            Fade_Image.SetActive(false);
         }
 	}
 
@@ -56,8 +62,6 @@ public class FadeSystem : MonoBehaviour {
         {
             isFade = false;
             isFadeOut = false;
-
-            //SceneManager.LoadScene(SceneName);
         }
     }
 }
