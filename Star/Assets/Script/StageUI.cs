@@ -22,6 +22,7 @@ public class StageUI : MonoBehaviour {
 
     public void page0()
     {
+       
         stage1.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
         stage2.GetComponent<RectTransform>().localPosition = new Vector3(1280, 0, 0);
         stage3.GetComponent<RectTransform>().localPosition = new Vector3(2560, 0, 0);
@@ -29,6 +30,9 @@ public class StageUI : MonoBehaviour {
     }
     public void page1()
     {
+        FadeSystem.Fade_Image.SetActive(true);
+        FadeSystem.isFade = true;
+        FadeSystem.isFadeIn = true;
         stage1.GetComponent<RectTransform>().localPosition = new Vector3(-1280, 0, 0);
         stage2.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
         stage3.GetComponent<RectTransform>().localPosition = new Vector3(1280, 0, 0);
