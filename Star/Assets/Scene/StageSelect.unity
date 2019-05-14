@@ -587,7 +587,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2136371212}
+      - m_Target: {fileID: 0}
         m_MethodName: s303
         m_Mode: 1
         m_Arguments:
@@ -1892,7 +1892,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2136371212}
+      - m_Target: {fileID: 0}
         m_MethodName: s302
         m_Mode: 1
         m_Arguments:
@@ -2908,19 +2908,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2136371214}
-        m_MethodName: s101
+        m_MethodName: s1011
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2136371210}
-        m_MethodName: OnClick
-        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4718,7 +4707,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2136371212}
+      - m_Target: {fileID: 0}
         m_MethodName: s301
         m_Mode: 1
         m_Arguments:
@@ -6685,7 +6674,6 @@ GameObject:
   - component: {fileID: 2136371215}
   - component: {fileID: 2136371214}
   - component: {fileID: 2136371213}
-  - component: {fileID: 2136371212}
   - component: {fileID: 2136371211}
   - component: {fileID: 2136371210}
   - component: {fileID: 2136371216}
@@ -6717,18 +6705,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2136371209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4cad8e5e6f9f3346af8408113bb8f8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2136371212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2136371209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d07c3c1560249c146a28a1af8c64a81d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eeb8538d0ffc5648b510fb8ab95642a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2136371213
@@ -6739,7 +6716,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2136371209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2844a125bef02c44bb52e7c2699c1de1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1908ccb1c2f94444bab724e9f3f009c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2136371214
@@ -6750,7 +6727,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2136371209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25080fb3099bbe341b2f9d6dba6cc4dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 106c15a83dd2ca940bde75ed2aeaf303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2136371215
