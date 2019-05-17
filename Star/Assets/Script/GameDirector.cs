@@ -16,6 +16,8 @@ public class GameDirector : MonoBehaviour {
     [SerializeField] List<GameObject> MySplit = new List<GameObject>();
     //objectの保持数Text
     [SerializeField] Text[] haveLabel;
+    //Splitの処理順
+    List<GameObject> SplitTurn = new List<GameObject>();
     //音
     [SerializeField] AudioSource[] audiosource; //0　戻る, 1　クリア
     ObjectController objCon;
@@ -64,8 +66,31 @@ public class GameDirector : MonoBehaviour {
         }
         lightObj.Clear();
         for (int i = 0; i < Sun.Count; i++) Sun[i].GetComponent<Sun>().RayCast(StartDir[i], 4);
-
+        SplitLight();
     }
+
+    //Splitを順番に処理する
+    void SplitLight() {
+        bool roopflag = true;
+        int count = SplitTurn.Count;
+        Split[] splitsScript = new Split[count];
+        for (int i = 0; i < count; i++) {
+            splitsScript[i] = SplitTurn[i].GetComponent<Split>();
+        }
+        while (roopflag) {
+            roopflag = false;
+            for (int i = 0; i < count; i++) {
+                if (splitsScript[i].Lighton()) roopflag = true;
+            }
+        }
+    }
+       
+    //Splitの順番を修正する
+    public void SplitTurnCange(GameObject obj) {
+        SplitTurn.Remove(obj);
+        SplitTurn.Add(obj);
+    }
+
 
     //手持ちからobjectを出す
     public void Getobj(int objNum) {
