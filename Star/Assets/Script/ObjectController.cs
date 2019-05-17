@@ -113,6 +113,7 @@ public class ObjectController : MonoBehaviour {
         satellite.GetComponent<BoxCollider>().enabled = false;
         gameDirector.ReLight();
         gameDirector.lightObj.Add(satellite);
+        if (obj.tag == "Split") gameDirector.SplitTurnCange(satellite);
     }
 
     void Spin(GameObject obj) {
@@ -125,6 +126,7 @@ public class ObjectController : MonoBehaviour {
                 break;
             case "Split":
                 obj.GetComponent<Split>().Spin();
+                gameDirector.SplitTurnCange(obj);
                 break;
 
         }
