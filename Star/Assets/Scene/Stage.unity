@@ -4441,9 +4441,9 @@ MonoBehaviour:
   gameDirector: {fileID: 402841171}
   squaresParent: {fileID: 1040886989}
   Prefabs:
-  - {fileID: 1916775028867116, guid: 44413907d23a83b4988c9320eba17f45, type: 2}
+  - {fileID: 1454180267383364, guid: 3127b468825c65d429d76dd02d0cea5a, type: 2}
   - {fileID: 1263385006587712, guid: 6c32bcb4c4f64e744b0c214154600aa7, type: 2}
-  - {fileID: 1144616916407066, guid: 41a896a36e6f43e479d6394d45bde3d4, type: 2}
+  - {fileID: 1272642025871202, guid: 4ddc7e44eaa760143890468f2584c267, type: 2}
   - {fileID: 1071489028299466, guid: a655b7c4b67087c44ac74879ba5b8263, type: 2}
   - {fileID: 1312585984972446, guid: bdbd6a82b0a96364eb8c9833fb83cafc, type: 2}
   - {fileID: 1334971826375012, guid: 1ddeee9e5385ba34d8b7d188a51d2d3d, type: 2}
@@ -20645,7 +20645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1716011726
 Light:
   m_ObjectHideFlags: 0
