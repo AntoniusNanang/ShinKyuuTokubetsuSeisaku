@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 99b4f71b5c610f349a33c51ea58a6b98, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.05666183, g: 0.12311695, b: 0.310812, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4566,9 +4566,9 @@ MonoBehaviour:
   gameDirector: {fileID: 402841171}
   squaresParent: {fileID: 1040886989}
   Prefabs:
-  - {fileID: 1916775028867116, guid: 44413907d23a83b4988c9320eba17f45, type: 2}
+  - {fileID: 1454180267383364, guid: 3127b468825c65d429d76dd02d0cea5a, type: 2}
   - {fileID: 1263385006587712, guid: 6c32bcb4c4f64e744b0c214154600aa7, type: 2}
-  - {fileID: 1144616916407066, guid: 41a896a36e6f43e479d6394d45bde3d4, type: 2}
+  - {fileID: 1272642025871202, guid: 4ddc7e44eaa760143890468f2584c267, type: 2}
   - {fileID: 1071489028299466, guid: a655b7c4b67087c44ac74879ba5b8263, type: 2}
   - {fileID: 1312585984972446, guid: bdbd6a82b0a96364eb8c9833fb83cafc, type: 2}
   - {fileID: 1334971826375012, guid: 1ddeee9e5385ba34d8b7d188a51d2d3d, type: 2}
@@ -20079,7 +20079,7 @@ Camera:
   m_GameObject: {fileID: 1649276627}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.05363321, g: 0.124279104, b: 0.2352941, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -21032,7 +21032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1716011726
 Light:
   m_ObjectHideFlags: 0
