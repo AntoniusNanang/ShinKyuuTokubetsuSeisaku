@@ -85,9 +85,11 @@ public class ObjectController : MonoBehaviour {
         if (Physics.Raycast(ray2, out hit2, raydistans, squaremask)) {
             GameObject obj = hit2.collider.gameObject;
             if (obj.tag == "Square" && obj != OnSquare) {
-                if (OnSquare != null && OnSquare.tag == "Square") OnSquare.GetComponent<MeshFilter>().mesh = null;
-                obj.GetComponent<MeshFilter>().mesh = _mesh;
-                OnSquare = obj;
+                if (!obj.GetComponent<Square>().MarkFlag) {
+                    if (OnSquare != null && OnSquare.tag == "Square") OnSquare.GetComponent<MeshFilter>().mesh = null;
+                    obj.GetComponent<MeshFilter>().mesh = _mesh;
+                    OnSquare = obj;
+                }
             }
         } else if (OnSquare != null && OnSquare.tag == "Square") {
             OnSquare.GetComponent<MeshFilter>().mesh = null;
