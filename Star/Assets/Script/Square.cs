@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Square : MonoBehaviour {
     public bool SetFlag = true;
+    public bool MarkFlag = false;
 
     public bool SetObj(GameObject obj) {
         if (SetFlag) {
