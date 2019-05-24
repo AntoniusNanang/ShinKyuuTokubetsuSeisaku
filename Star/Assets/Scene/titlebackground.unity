@@ -14188,6 +14188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edb20c2e34824e46b448329afa28ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameScene: StageSelect
 --- !u!4 &1521865445
 Transform:
   m_ObjectHideFlags: 0
