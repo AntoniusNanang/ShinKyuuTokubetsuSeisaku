@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HelpUI : MonoBehaviour
 {
@@ -30,6 +31,16 @@ public class HelpUI : MonoBehaviour
     {
         help.SetActive(false);
         a = false;
+    }
+
+    public void reset()
+    {
+        SceneManager.LoadScene("Stage");
+    }
+
+    public void selectback()
+    {
+        SceneManager.LoadScene("StageSelect");
     }
 }
 
