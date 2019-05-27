@@ -1,54 +1,49 @@
 fileFormatVersion: 2
-guid: 6d98e6b0ee04ae247a8f992bedc74961
-timeCreated: 1558063427
+guid: a5bd7bce0f6da4148bb64c5f0b7db63e
+timeCreated: 1558675353
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Cylinder
-    100002: Cylinder.001
-    100004: Cylinder.002
-    100006: Cylinder.003
-    100008: Cylinder.004
-    100010: Cylinder.005
-    100012: Cylinder.006
+    100000: Cylinder008
+    100002: Cylinder009
+    100004: Cylinder010
+    100006: Cylinder011
+    100008: Cylinder012
+    100010: Cylinder013
+    100012: Cylinder014
     100014: //RootNode
-    400000: Cylinder
-    400002: Cylinder.001
-    400004: Cylinder.002
-    400006: Cylinder.003
-    400008: Cylinder.004
-    400010: Cylinder.005
-    400012: Cylinder.006
+    400000: Cylinder008
+    400002: Cylinder009
+    400004: Cylinder010
+    400006: Cylinder011
+    400008: Cylinder012
+    400010: Cylinder013
+    400012: Cylinder014
     400014: //RootNode
-    2100000: Material.007
-    2100002: Material.006
-    2100004: Material.005
-    2100006: Material.004
-    2100008: Material.003
-    2100010: Material.002
-    2100012: Material.001
-    2300000: Cylinder
-    2300002: Cylinder.001
-    2300004: Cylinder.002
-    2300006: Cylinder.003
-    2300008: Cylinder.004
-    2300010: Cylinder.005
-    2300012: Cylinder.006
-    3300000: Cylinder
-    3300002: Cylinder.001
-    3300004: Cylinder.002
-    3300006: Cylinder.003
-    3300008: Cylinder.004
-    3300010: Cylinder.005
-    3300012: Cylinder.006
-    4300000: Cylinder
-    4300002: Cylinder.001
-    4300004: Cylinder.002
-    4300006: Cylinder.003
-    4300008: Cylinder.004
-    4300010: Cylinder.005
-    4300012: Cylinder.006
+    2100000: No Name
+    2300000: Cylinder008
+    2300002: Cylinder009
+    2300004: Cylinder010
+    2300006: Cylinder011
+    2300008: Cylinder012
+    2300010: Cylinder013
+    2300012: Cylinder014
+    3300000: Cylinder008
+    3300002: Cylinder009
+    3300004: Cylinder010
+    3300006: Cylinder011
+    3300008: Cylinder012
+    3300010: Cylinder013
+    3300012: Cylinder014
+    4300000: Cylinder008
+    4300002: Cylinder009
+    4300004: Cylinder010
+    4300006: Cylinder011
+    4300008: Cylinder012
+    4300010: Cylinder013
+    4300012: Cylinder014
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -123,7 +118,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
