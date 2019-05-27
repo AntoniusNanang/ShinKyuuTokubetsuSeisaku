@@ -33,14 +33,6 @@ public class HelpUI : MonoBehaviour
         a = false;
     }
 
-    public void reset()
-    {
-        SceneManager.LoadScene("Stage");
-    }
 
-    public void selectback()
-    {
-        SceneManager.LoadScene("StageSelect");
-    }
 }
 
