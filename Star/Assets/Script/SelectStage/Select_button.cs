@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Select_button : MonoBehaviour {
 
     public GameObject[] select;
-    RectTransform[] rect = new RectTransform[2];
+    RectTransform[] rect = new RectTransform[3];
     float speed = 10.0f;
+    bool Move = false;
     bool onNextClick = false;
     bool onBackClick = false;
     float time;
@@ -28,28 +29,47 @@ public class Select_button : MonoBehaviour {
     void Update()
     {
         time += Time.time;
+        
         if (onNextClick)
         {
-            for (int i = 0; i < select.Length; i++)
+            if (!Move)
             {
-                rect[i].localPosition += new Vector3(-1.0f * speed, 0.0f, 0.0f);
-                if (rect[i].localPosition.x == 0f)
+                for (int i = 0; i < select.Length; i++)
                 {
-                    onNextClick = false;
-                    break;
+                    rect[i].localPosition += new Vector3(-1.0f * speed, 0.0f, 0.0f);
+                    if (rect[i].localPosition.x == 0f)
+                    {
+                        onNextClick = false;
+                        Debug.Log(speed);
+                        Move = true;
+                    }
+                    if (rect[2].localPosition.x == 0)
+                    {
+                        speed = 0;
+
+                    }
                 }
+
             }
         }
-
+        if (rect[0].localPosition.x == 0)
+        {
+            speed = 0;
+        }
         if (onBackClick)
         {
-            for (int i = 0; i < select.Length; i++)
+            if (Move)
             {
-                rect[i].localPosition += new Vector3(1.0f * speed, 0.0f, 0.0f);
-                if (rect[i].localPosition.x == 0f)
+                for (int i = 0; i < select.Length; i++)
                 {
-                    onBackClick = false;
-                    break;
+                    rect[i].localPosition += new Vector3(1.0f * speed, 0.0f, 0.0f);
+
+                    if (rect[i].localPosition.x == 0f)
+                    {
+                        onBackClick = false;
+                        Move = false;
+                    }
+
                 }
             }
         }
@@ -59,14 +79,25 @@ public class Select_button : MonoBehaviour {
     public void nextClick()
     {
         onNextClick = true;
-        Select_Zoom.click = true;
-        Select_Zoom.change = false;
+        Move = false;
+        speed = 10;
+        if (Select_Zoom.judg == true)
+        {
+            Select_Zoom.click = true;
+            Select_Zoom.change = false;
+        }
     }
 
     public void backClick()
     {
         onBackClick = true;
-        Select_Zoom.click = true;
-        Select_Zoom.change = false;
+        Move = true;
+        speed = 10;
+        if (Select_Zoom.judg == true)
+        {
+            Select_Zoom.click = true;
+            Select_Zoom.change = false;
+        }
+
     }
 }

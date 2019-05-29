@@ -9,6 +9,7 @@ public class Select_Zoom : MonoBehaviour {
     RectTransform[] rect = new RectTransform[2];
     static public bool click = false;
     static public bool change = true;
+    static public bool judg = false;
 
     // Use this for initialization
     void Start()
@@ -29,12 +30,14 @@ public class Select_Zoom : MonoBehaviour {
                 click = false;
                 StartCoroutine(changeButtonBigSize());
                 change = false;
+                judg = true;
             }
             else if (!change)
             {
                 click = false;
                 StartCoroutine(changeButtonSmallSize());
                 change = true;
+                judg = false;
             }
         }
 
