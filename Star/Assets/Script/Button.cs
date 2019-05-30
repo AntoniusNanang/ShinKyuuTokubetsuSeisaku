@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour {
 
-    public GameObject n;
+    public GameObject n1;
+    public GameObject n2;
+    public GameObject n3;
+
     bool b = false;
     string x;
     GameObject game;
@@ -22,16 +25,42 @@ public class Button : MonoBehaviour {
 		
 	}
 
-    public void ui()
+    public void ui1()
     {
         if (b == true)
         {
-            n.SetActive(false);
+            n1.SetActive(false);
             b = false;
         }
         else if (b == false)
         {
-            n.SetActive(true);
+            n1.SetActive(true);
+            b = true;
+        }
+    }
+    public void ui2()
+    {
+        if (b == true)
+        {
+            n2.SetActive(false);
+            b = false;
+        }
+        else if (b == false)
+        {
+            n2.SetActive(true);
+            b = true;
+        }
+    }
+    public void ui3()
+    {
+        if (b == true)
+        {
+            n3.SetActive(false);
+            b = false;
+        }
+        else if (b == false)
+        {
+            n3.SetActive(true);
             b = true;
         }
     }
@@ -39,13 +68,13 @@ public class Button : MonoBehaviour {
     public void reset()
     {
         x = "reset";
-        ui();
+        ui1();
     }
 
     public void selectback()
     {
         x = "selectback";
-        ui();
+        ui2();
     }
 
     public void yes()
@@ -53,6 +82,8 @@ public class Button : MonoBehaviour {
         if (x == "reset")
         {
             SceneManager.LoadScene("stage");
+            FadeSystem.isFade = true;
+            FadeSystem.isFadeOut = true;
         }
         else if (x == "selectback")
         {
@@ -62,7 +93,7 @@ public class Button : MonoBehaviour {
 
     public void no()
     {
-        n.SetActive(false);
+        n1.SetActive(false);
         b = false;
     }
 

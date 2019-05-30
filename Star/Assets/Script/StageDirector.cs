@@ -64,7 +64,7 @@ public class StageDirector : MonoBehaviour {
 
 
     void Start() {
-        StageSet(a01, a03, a02, a04, -10, a05);
+        //StageSet(a01, a03, a02, a04, -10, a05);
         CenterMove.centerPos = center_;
         CameraController.camera_z = camera_;
         CreateStage();
