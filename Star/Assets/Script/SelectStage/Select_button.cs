@@ -32,6 +32,8 @@ public class Select_button : MonoBehaviour {
         
         if (onNextClick)
         {
+            Selecr_spel.Zoom = false;
+            Debug.Log(Selecr_spel.Zoom);
             if (!Move)
             {
                 for (int i = 0; i < select.Length; i++)
@@ -58,6 +60,8 @@ public class Select_button : MonoBehaviour {
         }
         if (onBackClick)
         {
+            Selecr_spel.Zoom = false;
+            Debug.Log(Selecr_spel.Zoom);
             if (Move)
             {
                 for (int i = 0; i < select.Length; i++)
@@ -81,10 +85,12 @@ public class Select_button : MonoBehaviour {
         onNextClick = true;
         Move = false;
         speed = 10;
+        
         if (Select_Zoom.judg == true)
         {
             Select_Zoom.click = true;
             Select_Zoom.change = false;
+            Select_Zoom.judg = true;
         }
     }
 
@@ -93,10 +99,12 @@ public class Select_button : MonoBehaviour {
         onBackClick = true;
         Move = true;
         speed = 10;
+      
         if (Select_Zoom.judg == true)
         {
             Select_Zoom.click = true;
             Select_Zoom.change = false;
+            Select_Zoom.judg = true;
         }
 
     }

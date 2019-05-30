@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Select_Zoom : MonoBehaviour {
 
     public GameObject[] button;
-    RectTransform[] rect = new RectTransform[2];
+    RectTransform[] rect = new RectTransform[3];
     static public bool click = false;
     static public bool change = true;
     static public bool judg = false;
@@ -27,18 +27,30 @@ public class Select_Zoom : MonoBehaviour {
         {
             if (change)
             {
+                Selecr_spel.jug = true;
                 click = false;
                 StartCoroutine(changeButtonBigSize());
                 change = false;
-                judg = true;
+                judg = true; 
             }
             else if (!change)
             {
+                Selecr_spel.jug = false;
                 click = false;
                 StartCoroutine(changeButtonSmallSize());
                 change = true;
                 judg = false;
             }
+        }
+        if (judg)
+        {
+            Selecr_spel.Zoom = false;
+            
+        }
+        else if (!judg)
+        {
+            Selecr_spel.Zoom = true;
+
         }
 
     }
@@ -53,6 +65,7 @@ public class Select_Zoom : MonoBehaviour {
     {
         var size = 0f;
         var speed = 0.03f;
+       
 
         while (size <= 1.0f)
         {
