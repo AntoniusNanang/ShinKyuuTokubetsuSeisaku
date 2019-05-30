@@ -8,11 +8,13 @@ public class Button : MonoBehaviour {
     public GameObject n;
     bool b = false;
     string x;
-    delegate void MyType();
-    MyType n_s;
+    GameObject game;
+    s1 script;
+
     // Use this for initialization
     void Start () {
-		
+        game = GameObject.Find("GameRoot");
+        script = game.GetComponent<s1>();
 	}
 	
 	// Update is called once per frame
@@ -76,6 +78,7 @@ public class Button : MonoBehaviour {
 
     public void n_stage()
     {
-     
+        script.X();
     }
+        
 }
