@@ -8,6 +8,8 @@ public class Button : MonoBehaviour {
     public GameObject n;
     bool b = false;
     string x;
+    delegate void MyType();
+    MyType n_s;
     // Use this for initialization
     void Start () {
 		
@@ -60,5 +62,20 @@ public class Button : MonoBehaviour {
     {
         n.SetActive(false);
         b = false;
+    }
+
+    public void s_back()
+    {
+        SceneManager.LoadScene("stageselect");
+    }
+
+    public void restart()
+    {
+        SceneManager.LoadScene("stage");
+    }
+
+    public void n_stage()
+    {
+     
     }
 }

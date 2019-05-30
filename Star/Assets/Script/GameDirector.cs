@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameDirector : MonoBehaviour {
     public List<GameObject> Sun;
     public List<GameObject> Star;
+    public GameObject clear;
     //光源のスタート方向
     public List<int> StartDir;
     //光を飛ばしているオブジェクト
@@ -157,7 +158,7 @@ public class GameDirector : MonoBehaviour {
             audiosource[1].PlayDelayed(5f);
             int count = MyMirror.Count + MyPower.Count + MySplit.Count;
             int Score = GetComponent<StageDirector>().ScoreChake(count);
-            Debug.Log("Crear!! : " + Score);
+            clear.SetActive(true);
         }
     }
 }

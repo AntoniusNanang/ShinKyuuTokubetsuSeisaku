@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class s1 : MonoBehaviour
 {
-
     public void s1011()
     {
         //ステージマップ
