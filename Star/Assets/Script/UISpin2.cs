@@ -53,7 +53,6 @@ public class UISpin2 : MonoBehaviour {
             float angel = i * (-180 / itemNum) + 90;
             //ラジアン
             rad = angel * Mathf.Deg2Rad;
-            Debug.Log("rad = " + rad);
             //座標変換
             float x = Mathf.Cos(rad) * r[i];
             float y = Mathf.Sin(rad) * r[i];
@@ -91,7 +90,6 @@ public class UISpin2 : MonoBehaviour {
             for (int i = 0; i < 2; i++)
             {
                 nowRad =time * speed + startRads[i];
-                Debug.Log(nowRad);
                 float x_2 = Mathf.Cos(nowRad) * r[i];
                 float y_2 = Mathf.Sin(nowRad) * r[i];
                 transforms[i].anchoredPosition = new Vector2(x_2, y_2);
