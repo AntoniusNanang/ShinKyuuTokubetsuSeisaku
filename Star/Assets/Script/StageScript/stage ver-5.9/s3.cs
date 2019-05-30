@@ -127,7 +127,7 @@ public class s3 : MonoBehaviour
         };
 
         //ギミックの向き(初期配置)
-        int[] direction = {  };
+        int[] direction = { 1,4,6,1 };
 
         //保持しているギミック{人工衛星,増幅装置,分裂装置}
         int[] obj = { 4, 0, 1 };
