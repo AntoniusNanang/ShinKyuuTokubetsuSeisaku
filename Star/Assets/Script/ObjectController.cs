@@ -121,12 +121,14 @@ public class ObjectController : MonoBehaviour {
     void Spin(GameObject obj) {
         switch (obj.tag) {
             case "Mirror":
+                obj.GetComponent<Mirror>().Lightoff();
                 obj.GetComponent<Mirror>().Spin();
                 break;
             case "Power":
                 obj.GetComponent<Power>().Spin();
                 break;
             case "Split":
+                obj.GetComponent<Split>().Lightoff();
                 obj.GetComponent<Split>().Spin();
                 gameDirector.SplitTurnCange(obj);
                 break;

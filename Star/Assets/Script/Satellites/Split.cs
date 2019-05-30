@@ -18,88 +18,10 @@ public class Split : Satellite_Base {
 
         //光を保存する
         havePow[x] = (havePow[x] == 0) ? pow : havePow[x];
-
-
-        ////*********************************************************************
-        ////入射方向x(local)
-        //int x = dir - nowforward;
-        //x = (x >= 0) ? x : 8 + x;
-
-        //if (pow >= 1 && afterDir[x] >= 0) {
-        //    if (InLight == 0) {
-        //        //照射方向d, d2(local)
-        //        int d = afterDir[x];
-        //        int d2 = afterDir2[x];
-        //        //照射威力
-        //        float nextPow = Mathf.Min(pow * afterPow, 4);
-        //        if (d >= 0) {
-        //            backupDir = x;
-        //            backupPow = pow;
-        //            InLight++;
-        //            //照射威力が足りるとき
-        //            if (nextPow >= 1) {
-        //                //照射方向1(world)
-        //                Vector3 nextDir1 = Dir[(d + nowforward) % 8];
-        //                //Rayの作成
-        //                Ray ray1 = new Ray(transform.position, nextDir1);
-        //                RaycastHit hit1;
-        //                //Rayがぶつかったオブジェクトまで線を描き、光を渡す
-        //                if (Physics.Raycast(ray1, out hit1, 20.0f, layermask)) {
-        //                    drawLine(d, hit1.collider.transform.position, pow, nextPow);
-        //                    HitRay(hit1.collider.gameObject, (d + nowforward) % 8, nextPow);
-        //                } else {
-        //                    drawLine(d, transform.position + nextDir1 * 20, pow, nextPow);
-        //                }
-        //                //照射方向2(world)
-        //                Vector3 nextDir2 = Dir[(d2 + nowforward) % 8];
-        //                //Rayの作成
-        //                Ray ray2 = new Ray(transform.position, nextDir2);
-        //                RaycastHit hit2;
-        //                //Rayがぶつかったオブジェクトまで線を描き、光を渡す
-        //                if (Physics.Raycast(ray2, out hit2, 20.0f, layermask)) {
-        //                    drawLine(d2, hit2.collider.transform.position, pow, nextPow);
-        //                    HitRay(hit2.collider.gameObject, (d2 + nowforward) % 8, nextPow);
-        //                } else {
-        //                    drawLine(d2, transform.position + nextDir2 * 20, pow, nextPow);
-        //                }
-        //                //照射威力が足りないとき
-        //            } else if (nextPow == 0.5f) {
-        //                backupDir = x;
-        //                backupPow = pow;
-        //                GameRoot.GetComponent<GameDirector>().lightObj.Add(this.gameObject);
-        //            }
-        //        }
-        //    //光がすでに1本入ってきているとき
-        //    } else if (InLight == 1 && backupDir != x) {
-        //        //照射方向(local)
-        //        int d = -1;
-        //        if (backupDir != 2 && x != 2) d = 6;
-        //        else if (backupDir != 4 && x != 4) d = 0;
-        //        else if (backupDir != 6 && x != 6) d = 2;
-        //        //照射威力
-        //        float nextPow = 0;
-        //        if (backupPow == 1 && pow == 1) nextPow = 2;
-        //        else if (backupPow >= 1 && pow >= 1) nextPow = 4;
-        //        //光線をリセット
-        //        Lightoff();
-        //        InLight = 2;
-        //        //照射方向(world)
-        //        Vector3 nextDir = Dir[(d + nowforward) % 8];
-        //        //Rayの作成
-        //        Ray ray = new Ray(transform.position, nextDir);
-        //        RaycastHit hit;
-        //        //Rayがぶつかったオブジェクトまで線を描き、光を渡す
-        //        if (Physics.Raycast(ray, out hit, 20.0f, layermask)) {
-        //            drawLine(d, hit.collider.transform.position, pow, nextPow);
-        //            HitRay(hit.collider.gameObject, (d + nowforward) % 8, nextPow);
-        //        } else {
-        //            drawLine(d, transform.position + nextDir * 20, pow, nextPow);
-        //        }
-        //    }
-        //}
     }
 
     public bool Lighton() {
+        InLight = 0;
         //光をすでに飛ばしていたら終了
         if (lightflag) return false;
 
@@ -107,15 +29,16 @@ public class Split : Satellite_Base {
         int[] lightvec = new int[3] { -1, -1 , -1}; //2, 4, 6
         float[] lightpow = new float[3] { -1, -1 , -1}; //1, 2, 4
         for (int i = 0; i < 8; i++) {
-            if (havePow[i] > 0) {
+            if (havePow[i] >= 1) {
                 lightvec[InLight] = i;          //方向
                 lightpow[InLight] = havePow[i]; //強さ
                 InLight++;                      //数
             }
         }
+
         //光が全方向から入ってきている場合、もしくはどこからも来ていなかったら終了
         if (InLight > 2 || InLight < 1) return false;
-
+        
 
         //光を飛ばす方向と強さを決定する
         int[] nextlocalLightvec = new int[2];
