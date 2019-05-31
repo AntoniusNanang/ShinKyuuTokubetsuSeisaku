@@ -36,6 +36,7 @@ public class Selecr_spel : MonoBehaviour {
         {
 
             stage[i].SetActive(Zoom);
+           
             stage[i].transform.SetParent(stage_p, false);
             r[i] = stage[i].transform.localPosition.y;
             trans[i] = stage[i].GetComponent<RectTransform>();
@@ -68,7 +69,7 @@ public class Selecr_spel : MonoBehaviour {
                     x = r[i] * Mathf.Cos(time * speed + rad[i]);
                     y = r[i] * Mathf.Sin(time * speed + rad[i]);
                     stage[i].transform.localPosition = new Vector3(x, y, 0.0f);
-                    cnt++;
+                   
                     
                 }
                 if (sec <= 0)
@@ -86,7 +87,6 @@ public class Selecr_spel : MonoBehaviour {
                     totalTime = 0;
                     sec = 0;
                 }
-                Debug.Log(jug);
                 
             }
             
@@ -95,7 +95,11 @@ public class Selecr_spel : MonoBehaviour {
         {
             time = 0;
         }
-        
+        for (int i = 0; i < stage.Length; i++)
+        {
+            stage[i].SetActive(Zoom);
+        }
+
     }
 
     public void onClick()
@@ -103,9 +107,6 @@ public class Selecr_spel : MonoBehaviour {
         click = true;
         speed = 2;
         totalTime = 3;
-        for (int i = 0; i < stage.Length; i++)
-        {
-            stage[i].SetActive(Zoom);
-        }
+        
     }
 }

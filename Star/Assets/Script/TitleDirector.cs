@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class TitleDirector : MonoBehaviour {
 
     public string nameScene;
+    public AudioSource[] audio;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +18,15 @@ public class TitleDirector : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene(nameScene);
+            audio[0].volume = 0.4f;
+            audio[1].Play();
+            Invoke("SceneMove", 4);
         }
 
 	}
+
+    void SceneMove()
+    {
+        SceneManager.LoadScene(nameScene);
+    }
 }

@@ -158,7 +158,12 @@ public class GameDirector : MonoBehaviour {
             audiosource[1].PlayDelayed(5f);
             int count = MyMirror.Count + MyPower.Count + MySplit.Count;
             int Score = GetComponent<StageDirector>().ScoreChake(count);
-            clear.SetActive(true);
+            Invoke("ClearScren", 5);
         }
     }
+
+    void ClearScren()
+    {
+        clear.SetActive(true);
+    } 
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class s1 : MonoBehaviour
 {
     public delegate void MyType();
-    public MyType X;
+    static public MyType X ;
+    
 
     public void s1011()
     {
@@ -51,6 +52,7 @@ public class s1 : MonoBehaviour
         Vector3 center = new Vector3(1, -1, 0);
 
         X = s1012;
+       
 
         StageDirector.StageSet(stage, direction, obj, score, camera, center);
     }

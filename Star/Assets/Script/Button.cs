@@ -14,6 +14,8 @@ public class Button : MonoBehaviour {
     GameObject game;
     s1 script;
 
+    public AudioSource audio_Button;
+
     // Use this for initialization
     void Start () {
         game = GameObject.Find("GameRoot");
@@ -67,18 +69,21 @@ public class Button : MonoBehaviour {
 
     public void reset()
     {
+        audio_Button.Play();
         x = "reset";
         ui1();
     }
 
     public void selectback()
     {
+        audio_Button.Play();
         x = "selectback";
         ui2();
     }
 
     public void yes()
     {
+        audio_Button.Play();
         if (x == "reset")
         {
             SceneManager.LoadScene("stage");
@@ -93,23 +98,28 @@ public class Button : MonoBehaviour {
 
     public void no()
     {
+        audio_Button.Play();
         n1.SetActive(false);
+        n2.SetActive(false);
         b = false;
     }
 
     public void s_back()
     {
+        audio_Button.Play();
         SceneManager.LoadScene("stageselect");
     }
 
     public void restart()
     {
+        audio_Button.Play();
         SceneManager.LoadScene("stage");
     }
 
     public void n_stage()
     {
-        script.X();
+        audio_Button.Play();
+        s1.X();
     }
         
 }

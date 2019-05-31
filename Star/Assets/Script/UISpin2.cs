@@ -31,6 +31,8 @@ public class UISpin2 : MonoBehaviour {
     int cnt;
     int reset = 0;
 
+    public AudioSource audio_UISpin;
+
 
     // Use this for initialization
     void Start () {
@@ -113,5 +115,6 @@ public class UISpin2 : MonoBehaviour {
     public void Click()
     {
         onClick = true;
+        audio_UISpin.Play();
     }
 }

@@ -5,11 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class SceneMove : MonoBehaviour {
 
+
+
     public void OnClick(string SceneName)
     {
         SceneManager.LoadScene(SceneName);
         FadeSystem.isFade = true;
         FadeSystem.isFadeOut = true;
+        if(Select_Zoom.judg == true)
+        {
+            Select_Zoom.click = true;
+            Select_Zoom.change = false;
+            Selecr_spel.Zoom = false;
+        }
 
     }
 

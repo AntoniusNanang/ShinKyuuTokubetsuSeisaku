@@ -11,6 +11,8 @@ public class Select_Zoom : MonoBehaviour {
     static public bool change = true;
     static public bool judg = false;
 
+    public AudioSource audio;
+
     // Use this for initialization
     void Start()
     {
@@ -18,6 +20,7 @@ public class Select_Zoom : MonoBehaviour {
         {
             rect[i] = button[i].GetComponent<RectTransform>();
         }
+       
     }
 
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class Select_Zoom : MonoBehaviour {
     {
         if (click)
         {
+           
             if (change)
             {
                 Selecr_spel.jug = true;
@@ -41,24 +45,27 @@ public class Select_Zoom : MonoBehaviour {
                 change = true;
                 judg = false;
             }
+           
         }
+
         if (judg)
-        {
-            Selecr_spel.Zoom = false;
-            
-        }
-        else if (!judg)
         {
             Selecr_spel.Zoom = true;
 
         }
+        else if (!judg)
+        {
+            Selecr_spel.Zoom = false;
+        }
+        
+
 
     }
 
     public void onClick()
     {
         click = true;
-
+        audio.Play();
     }
 
     IEnumerator changeButtonBigSize()

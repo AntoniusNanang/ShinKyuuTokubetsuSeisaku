@@ -12,6 +12,7 @@ public class Select_button : MonoBehaviour {
     bool onNextClick = false;
     bool onBackClick = false;
     float time;
+    public AudioSource audio_SB;
 
     // Use this for initialization
     void Start()
@@ -20,7 +21,7 @@ public class Select_button : MonoBehaviour {
         for (int i = 0; i < select.Length; i++)
         {
             rect[i] = select[i].GetComponent<RectTransform>();
-            Debug.Log("rect" + rect[i]);
+
         }
 
     }
@@ -32,8 +33,9 @@ public class Select_button : MonoBehaviour {
         
         if (onNextClick)
         {
+           
             Selecr_spel.Zoom = false;
-            Debug.Log(Selecr_spel.Zoom);
+           
             if (!Move)
             {
                 for (int i = 0; i < select.Length; i++)
@@ -60,8 +62,9 @@ public class Select_button : MonoBehaviour {
         }
         if (onBackClick)
         {
+            
             Selecr_spel.Zoom = false;
-            Debug.Log(Selecr_spel.Zoom);
+            
             if (Move)
             {
                 for (int i = 0; i < select.Length; i++)
@@ -82,6 +85,7 @@ public class Select_button : MonoBehaviour {
 
     public void nextClick()
     {
+        audio_SB.Play();
         onNextClick = true;
         Move = false;
         speed = 10;
@@ -90,12 +94,13 @@ public class Select_button : MonoBehaviour {
         {
             Select_Zoom.click = true;
             Select_Zoom.change = false;
-            Select_Zoom.judg = true;
+           
         }
     }
 
     public void backClick()
     {
+        audio_SB.Play();
         onBackClick = true;
         Move = true;
         speed = 10;
@@ -104,7 +109,7 @@ public class Select_button : MonoBehaviour {
         {
             Select_Zoom.click = true;
             Select_Zoom.change = false;
-            Select_Zoom.judg = true;
+           
         }
 
     }
