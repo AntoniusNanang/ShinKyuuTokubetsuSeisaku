@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class Selecr_spel : MonoBehaviour {
 
     public GameObject[] stage;
-    public Transform stage_p;
+    public Transform stage_p1;
+    public Transform stage_p2;
+    public Transform stage_p3;
+
     RectTransform[] trans = new RectTransform[5];
 
     private float speed = 2.0f;
@@ -15,9 +18,9 @@ public class Selecr_spel : MonoBehaviour {
     float x;
     float y;
 
-    float[] r = new float[5];
+    float[] r = new float[15];
     float angle;
-    float[] rad = new float[5];
+    float[] rad = new float[15];
 
     bool click = false;
     static public bool Zoom = false;
@@ -32,17 +35,17 @@ public class Selecr_spel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        for(int i = 0; i < stage.Length; i++)
+        for(int i = 0; i < 5; i++)
         {
 
             stage[i].SetActive(Zoom);
            
-            stage[i].transform.SetParent(stage_p, false);
+            stage[i].transform.SetParent(stage_p1, false);
             r[i] = stage[i].transform.localPosition.y;
-            trans[i] = stage[i].GetComponent<RectTransform>();
+           
 
 
-            angle = i * (360 / stage.Length) + 90;
+            angle = i * (360 / 5) + 90;
             rad[i] = angle * Mathf.Deg2Rad;
             x = Mathf.Cos(rad[i]) * r[i];
             y = Mathf.Sin(rad[i]) * r[i];
@@ -50,15 +53,50 @@ public class Selecr_spel : MonoBehaviour {
             stage[i].transform.localPosition = new Vector3(x, y, 0.0f);
 
         }
-		
-	}
+
+        for(int i = 5; i < 10; i++)
+        {
+            stage[i].SetActive(Zoom);
+
+            stage[i].transform.SetParent(stage_p2, false);
+            r[i] = stage[i].transform.localPosition.y;
+
+
+
+            angle = i * (360 / 5) + 90;
+            rad[i] = angle * Mathf.Deg2Rad;
+            x = Mathf.Cos(rad[i]) * r[i];
+            y = Mathf.Sin(rad[i]) * r[i];
+
+            stage[i].transform.localPosition = new Vector3(x, y, 0.0f);
+        }
+        for (int i = 10; i < 15; i++)
+        {
+            stage[i].SetActive(Zoom);
+
+            stage[i].transform.SetParent(stage_p3, false);
+            r[i] = stage[i].transform.localPosition.y;
+           
+
+
+            angle = i * (360 / 5) + 90;
+            rad[i] = angle * Mathf.Deg2Rad;
+            x = Mathf.Cos(rad[i]) * r[i];
+            y = Mathf.Sin(rad[i]) * r[i];
+
+            stage[i].transform.localPosition = new Vector3(x, y, 0.0f);
+        }
+
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
         if (click)
         {
-            if(jug)
+            if (jug)
             {
                 time += Time.deltaTime;
                 totalTime -= Time.deltaTime;
@@ -69,13 +107,13 @@ public class Selecr_spel : MonoBehaviour {
                     x = r[i] * Mathf.Cos(time * speed + rad[i]);
                     y = r[i] * Mathf.Sin(time * speed + rad[i]);
                     stage[i].transform.localPosition = new Vector3(x, y, 0.0f);
-                   
-                    
+
                 }
+                
                 if (sec <= 0)
                 {
                     speed = speed * 0.98f;
-                    
+
                     if (speed <= 0.01f)
                     {
                         speed = 0;
@@ -87,9 +125,9 @@ public class Selecr_spel : MonoBehaviour {
                     totalTime = 0;
                     sec = 0;
                 }
-                
+
             }
-            
+
         }
         if (!jug)
         {
