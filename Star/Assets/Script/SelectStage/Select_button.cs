@@ -30,51 +30,56 @@ public class Select_button : MonoBehaviour {
     void Update()
     {
         time += Time.time;
-        
+
+       
         if (onNextClick)
         {
-           
-            Selecr_spel.Zoom = false;
-           
-            if (!Move)
+            if (rect[0].localPosition.x == 0)
             {
-                for (int i = 0; i < select.Length; i++)
-                {
-                    rect[i].localPosition += new Vector3(-1.0f * speed, 0.0f, 0.0f);
-                    if (rect[i].localPosition.x == 0f)
-                    {
-                        onNextClick = false;
-                        Debug.Log(speed);
-                        Move = true;
-                    }
-                    if (rect[2].localPosition.x == 0)
-                    {
-                        speed = 0;
-
-                    }
-                }
-
+                speed = 0;
             }
-        }
-        if (rect[0].localPosition.x == 0)
-        {
-            speed = 0;
-        }
-        if (onBackClick)
-        {
-            
             Selecr_spel.Zoom = false;
-            
+           
             if (Move)
             {
                 for (int i = 0; i < select.Length; i++)
                 {
                     rect[i].localPosition += new Vector3(1.0f * speed, 0.0f, 0.0f);
+                    if (rect[i].localPosition.x == 0f)
+                    {
+                        onNextClick = false;
+                        Move = true;
+                    }
+
+                    
+                }
+                
+
+            }
+          
+        }
+        
+
+        if (onBackClick)
+        {
+            
+            Selecr_spel.Zoom = false;
+            
+            if (!Move)
+            {
+                for (int i = 0; i < select.Length; i++)
+                {
+                    rect[i].localPosition += new Vector3(-1.0f * speed, 0.0f, 0.0f);
 
                     if (rect[i].localPosition.x == 0f)
                     {
                         onBackClick = false;
                         Move = false;
+                    }
+                   
+                    if (rect[2].localPosition.x == 0)
+                    {
+                        speed = 0;
                     }
 
                 }
@@ -87,7 +92,7 @@ public class Select_button : MonoBehaviour {
     {
         audio_SB.Play();
         onNextClick = true;
-        Move = false;
+        Move = true;
         speed = 10;
         
         if (Select_Zoom.judg == true)
@@ -102,7 +107,7 @@ public class Select_button : MonoBehaviour {
     {
         audio_SB.Play();
         onBackClick = true;
-        Move = true;
+        Move = false;
         speed = 10;
       
         if (Select_Zoom.judg == true)
